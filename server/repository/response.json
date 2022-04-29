@@ -1,0 +1,166 @@
+{
+    "generic": {
+        "success": {
+            "code": 0,
+            "message": "SUCCESS",
+            "description": "The request was successful."
+        },
+        "failure": {
+            "code": 1,
+            "message": "FAILURE",
+            "description": "The request is not successful."
+        },
+        "invalid_basic_authorization": {
+            "code": 2,
+            "message": "INVALID_BASIC_AUTHORIZATION",
+            "description": "The application id or application key are not configured properly."
+        },
+        "invalid_token": {
+            "code": 3,
+            "message": "INVALID_TOKEN",
+            "description": "The token was not valid in form or expired."
+        },
+        "invalid_ip_address": {
+            "code": 4,
+            "message": "INVALID_IP_ADDRESS",
+            "description": "This IP address is not authorized for API access."
+        },
+        "internal_error": {
+            "code": 5,
+            "message": "INTERNAL_ERROR",
+            "description": "When error on the server side occurs"
+        },
+        "invalid_profile": {
+            "code": 6,
+            "message": "INVALID_PROFILE",
+            "description": "When request does not have the privilege or is sent from the wrong profile"
+        }
+    },
+    "management": {
+        "root": {},
+        "team": {
+            "authentication": {
+                "invalid_license": {
+                    "code": 211,
+                    "message": "INVALID_LICENSE",
+                    "description": "When the team license not valid."
+                },
+                "team_user_token_expired": {
+                    "code": 211,
+                    "message": "TEAM_USER_TOKEN_EXPIRED",
+                    "description": "When the token carried in request expires."
+                },
+                "team_user_token_refreshed": {
+                    "code": 211,
+                    "message": "TEAM_USER_TOKEN_REFRESHED",
+                    "description": "When the token is validified and modified(prolongation, etc.)."
+                }
+            },
+            "register": {
+                "invalid_license": {
+                    "code": 211,
+                    "message": "INVALID_LCENSE",
+                    "description": "When the management license is not valid."
+                },
+                "team_username_is_already_registered": {
+                    "code": 211,
+                    "message": "TEAM_USERNAME_IS_ALREADY_REGISTERED",
+                    "description": "When the document matched by provided team username already has a password."
+                },
+                "invalid_team_username": {
+                    "code": 212,
+                    "message": "INVALID_TEAM_USERNAME",
+                    "description": "When the no document is matched with provided team username."
+                },
+                "invalid_team_password": {
+                    "code": 212,
+                    "message": "INVALID_TEAM_PASSWORD",
+                    "description": "When the no document is matched with provided team username and password."
+                },
+                "team_registration_failed": {
+                    "code": 213,
+                    "message": "TEAM_REGISTRATION_FAILED",
+                    "description": "When attempting to find one added team document in management and to activate by adding password failed"
+                }
+            },
+            "deregister": {
+                "can_not_delete_user": {
+                    "code": 213,
+                    "message": "CAN_NOT_DELETE_USER",
+                    "description": "When error occurs when deleting a user."
+                }
+            },
+            "login": {
+                "invalid_team_user_token": {
+                    "code": 201,
+                    "message": "INVALID_TEAM_USER_TOKEN",
+                    "description": "When a team user login request has a token that is invalid (deprecated or expired). Please login in with username and password again."
+                },
+                "invalid_team_credentials": {
+                    "code": 3,
+                    "message": "INVALID_TEAM_CREDENTIALS",
+                    "description": "When team username, password or other credential fields provided were invalid."
+                }
+            },
+            "logout": {},
+            "update": {}
+        }
+    },
+    "user": {
+        "authentication": {
+            "invalid_user_token": {
+                "code": 311,
+                "message": "INVALID_USER_TOKEN",
+                "description": "When the user token is not valid."
+            },
+            "user_token_expired": {
+                "code": 311,
+                "message": "USER_TOKEN_EXPIRED",
+                "description": "When the token carried in request expires."
+            },
+            "user_token_refreshed": {
+                "code": 311,
+                "message": "USER_TOKEN_REFRESHED",
+                "description": "When the token is validified and modified (prolonged, etc.)."
+            }
+        },
+        "register": {
+            "username_is_already_registered": {
+                "code": 211,
+                "message": "USERNAME_IS_ALREADY_REGISTERED",
+                "description": "When username for new user doc is found already exist."
+            },
+            "invalid_username": {
+                "code": 312,
+                "message": "INVALID_USERNAME",
+                "description": "When username is faulty in format, content legality, etc."
+            },
+            "invalid_password": {
+                "code": 313,
+                "message": "INVALID_PASSWORD",
+                "description": "When password is faulty in format."
+            }
+        },
+        "deregister": {
+            "can_not_delete_user": {
+                "code": 314,
+                "message": "CAN_NOT_DELETE_USER",
+                "description": "When error occurs when deleting a user."
+            }
+        },
+        "login": {
+            "invalid_team_user_token": {
+                "code": 201,
+                "message": "INVALID_TEAM_USER_TOKEN",
+                "description": "When a team user login request has a token that is invalid (deprecated or expired). Please login in with username and password again."
+            },
+            "invalid_credentials": {
+                "code": 3,
+                "message": "INVALID_CREDENTIALS",
+                "description": "The username, password or other credential fields provided were invalid."
+            }
+        },
+        "logout": {},
+        "update": {}
+    }
+}

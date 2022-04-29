@@ -1,14 +1,19 @@
-/**
- * @format
- */
-
-import 'react-native';
 import React from 'react';
+import {render, fireEvent, waitFor} from '@testing-library/react-native';
+
 import App from '../App';
+import Root from '../src/navigator';
+import MainStackNavigator from '../src/navigator/MainStackNavigator';
 
-// Note: test renderer must be required after react-native.
-import renderer from 'react-test-renderer';
+// ...
 
-it('renders correctly', () => {
-  renderer.create(<App />);
+describe('AppStack', () => {
+  it('renders the correct screen', async () => {
+    const {getByText} = render(
+      <Root>
+        <MainStackNavigator />
+      </Root>,
+    );
+    await waitFor(() => getByText('HomeScreen'));
+  });
 });
