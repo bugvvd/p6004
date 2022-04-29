@@ -1,4 +1,8 @@
+# data
+/server/data
+
 # Logs
+/server/log
 logs
 *.log
 npm-debug.log*
