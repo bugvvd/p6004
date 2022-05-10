@@ -11,7 +11,8 @@
     "getDefaultDB": "adb root && adb pull /data/data/com.management/files/default.realm && sudo chmod 777 default.realm",
     "ios": "react-native run-ios --port=8081",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "start": "react-native start --port=8081",
+    "start": "react-native start --port=8081 --reset-cache",
+    "start:ios": "react-native start --reset-cache",
     "test": "jest"
   },
   "dependencies": {
@@ -30,7 +31,6 @@
     "react-native-tab-view": "^3.1.1"
   },
   "devDependencies": {
-    "@babel/preset-typescript": "^7.16.7",
     "@babel/runtime": "^7.12.5",
     "@react-native-community/eslint-config": "^2.0.0",
     "@testing-library/react-native": "^9.1.0",
@@ -38,7 +38,7 @@
     "@types/react": "^18.0.8",
     "@types/react-native": "^0.67.6",
     "@types/react-test-renderer": "^18.0.0",
-    "babel-jest": "^28.0.2",
+    "babel-jest": "^28.0.3",
     "eslint": "^7.32.0",
     "jest": "^28.0.2",
     "metro-react-native-babel-preset": "^0.67.0",

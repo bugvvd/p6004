@@ -11,8 +11,6 @@ Always refer to doc, always
 npx react-native init user
 ```
 
-
-
 ## npm/yarn script
 
 `package.json`
@@ -38,7 +36,7 @@ npx react-native init user
 
 | Package                      | Version   | Doc                                                                                      | Ref | Remarks                                                                                                                                                         |
 | ---------------------------- | --------- | ---------------------------------------------------------------------------------------- | --- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `react-native-reanimated`    | `^2.8.0`  | [doc](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/installation) |     | [bable plugin](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/installation#babel-plugin) has to be listed last. Don't use Hermes (crash). |
+| `react-native-reanimated`    | `^2.8.0`  | [doc](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/installation) |     | [bable plugin](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/installation#babel-plugin) has to be listed last. Hermes (crash) was a problem. But it is ok now.|
 | `react-native-vision-camera` | `^2.13.2` | [doc](https://mrousavy.com/react-native-vision-camera/docs/guides)                       |     | `react-native-camera` deprecated.                                                                                                                               |
 |                              |           |                                                                                          |     |                                                                                                                                                                 |
 |                              |           |                                                                                          |     |                                                                                                                                                                 |
@@ -126,19 +124,121 @@ Package permissions
 
 ## IOS Config
 
+For now we have to accept that all the tricks attempting to load more than one debug app on the same IOS simulator has failed.
+We can only run **ONE** IOS simulator and **ONE** app at a time on only port **8081**.
+
 cocoapod
-Fix cocapod time out issue, please refer to [CocoaPods换源](https://www.jianshu.com/p/68a3bc2a41fc)
+Fix cocapod time out issue, please refer to [CocoaPods 换源](https://www.jianshu.com/p/68a3bc2a41fc)
+
 ```shell
 cd ~/.cocoapods/repos
 pod repo remove master
 # tuna
 git clone https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git master
 ```
+
 `user/ios/Podfile`
+
 ```ruby
 # top
 source 'https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git'
 ```
+
+## Typescript
+
+- [reactnative.dev](https://reactnative.dev/docs/typescript)
+- [react-native.cn](https://www.react-native.cn/docs/typescript)
+- [React TypeScript Cheatsheet](https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/hooks)
+
+### Typing React Native
+
+### Typing React Navigation
+
+#### Typing [...]
+
+## Testing: Jest
+
+### Setup
+
+[doc](https://jestjs.io/docs/tutorial-react-native)
+`npx react-native init <projectName>` generates `jest` field in `package.json`, while I prefer to decouple jest config in another file `jest.config.js`. Jest configuration can be in either `package.json` or `jest.config.js`. But NOT BOTH.
+`package.json`
+
+```json
+{
+  "scripts": {
+-    "test": "jest"
+  },
+-  "jest": {
+-    "preset": "react-native"
+-  }
+}
+```
+
+`jest.config.js`
+
+```js
+module.exports = {
+  preset: "react-native",
+};
+```
+
+Current setup suffice for bare react-native `snapshot` test, check [Jest: Snapshot Test](https://jestjs.io/docs/tutorial-react-native#snapshot-test)
+
+### Code Transformation
+
+- [Jest: Code Transformation](https://jestjs.io/docs/code-transformation#typescript-with-type-checking)
+  Jest runs the code in your project as JavaScript, but if you use some syntax not supported by Node out of the box (such as JSX, TypeScript, Vue templates) then you'll need to transform that code into plain JavaScript, similar to what you would do when building for browsers.
+
+Jest supports this via the `transform` configuration option.
+
+### Testing React Native
+
+#### Testing App
+
+### Testing React Navigation
+
+- [React Navigation: Testing with Jest](https://reactnavigation.org/docs/testing/)
+  > for `setupFiles` field in `jest.config.js`: testing only for Stack Navigator, `./node_modules/react-native-gesture-handler/jestSetup.js` suffices. But testing Drawer Navigator or other navigator requires an additional setup step for mocking the `react-native-reanimated` library.
+
+use a setup file to couple all requirement for jest test,
+
+`/jest/setup.js`
+
+```js
+import "react-native-gesture-handler/jestSetup";
+
+jest.mock("react-native-reanimated", () => {
+  const Reanimated = require("react-native-reanimated/mock");
+
+  // The mock for `call` immediately calls the callback which is incorrect
+  // So we override it with a no-op
+  Reanimated.default.call = () => {};
+
+  return Reanimated;
+});
+
+// Silence the warning: Animated: `useNativeDriver` is not supported because the native animated module is missing
+jest.mock("react-native/Libraries/Animated/src/NativeAnimatedHelper");
+```
+
+`jest.config.js`
+
+```js
+module.exports = {
+  preset: "react-native",
+  setupFiles: ["./jest-setup.js"],
+  transformIgnorePatterns: [
+    "node_modules/(?!(jest-)?react-native|@react-native-community|@react-navigation)",
+  ],
+};
+```
+
+#### Testing Navigator
+
+#### Testing Screen
+
+### Testing Redux
 
 ## Pending
 
