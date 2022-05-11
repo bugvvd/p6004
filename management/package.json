@@ -13,7 +13,7 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "start": "react-native start --port=8081 --reset-cache",
     "start:ios": "react-native start --reset-cache",
-    "test": "jest"
+    "test": "jest --watch-all --detectOpenHandles"
   },
   "dependencies": {
     "@react-navigation/drawer": "^6.4.1",
@@ -45,5 +45,8 @@
     "react-test-renderer": "17.0.2",
     "ts-jest": "^27.1.4",
     "typescript": "^4.6.3"
+  },
+  "resolutions": {
+    "@types/react": "^17"
   }
 }

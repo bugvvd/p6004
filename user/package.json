@@ -10,7 +10,7 @@
     "ios": "react-native run-ios",
     "dev:doc": "code ../doc/user.md",
     "clean": "cd android && ./gradlew clean && cd ..",
-    "test": "jest",
+    "test": "jest --watch-all --detectOpenHandles",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "getDefaultDB": "adb root && adb pull /data/data/com.user/files/default.realm && sudo chmod 777 default.realm",
     "eraseDefaultDB": "adb root && adb shell rm /data/data/com.user/files/default.realm"
@@ -42,5 +42,8 @@
     "metro-react-native-babel-preset": "^0.67.0",
     "react-test-renderer": "17.0.2",
     "typescript": "^4.6.3"
+  },
+  "resolutions": {
+    "@types/react" :"^17"
   }
 }

@@ -150,13 +150,18 @@ source 'https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git'
 - [react-native.cn](https://www.react-native.cn/docs/typescript)
 - [React TypeScript Cheatsheet](https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/hooks)
 
-### Typing React Native
+### Typescript && React Native
 
-### Typing React Navigation
+### Typescript && React Navigation
 
 #### Typing [...]
 
 ## Testing: Jest
+
+unit test
+integration test
+e2e test
+concurrent test?
 
 ### Setup
 
@@ -192,11 +197,11 @@ Current setup suffice for bare react-native `snapshot` test, check [Jest: Snapsh
 
 Jest supports this via the `transform` configuration option.
 
-### Testing React Native
+### Test React Native
 
-#### Testing App
+#### Test App
 
-### Testing React Navigation
+### Test React Navigation
 
 - [React Navigation: Testing with Jest](https://reactnavigation.org/docs/testing/)
   > for `setupFiles` field in `jest.config.js`: testing only for Stack Navigator, `./node_modules/react-native-gesture-handler/jestSetup.js` suffices. But testing Drawer Navigator or other navigator requires an additional setup step for mocking the `react-native-reanimated` library.
@@ -234,11 +239,14 @@ module.exports = {
 };
 ```
 
-#### Testing Navigator
+#### Test Navigator
 
-#### Testing Screen
+#### Test Screen
 
-### Testing Redux
+### Test Redux
+
+## CI/CD
+
 
 ## Pending
 
