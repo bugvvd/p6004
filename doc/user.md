@@ -144,15 +144,21 @@ git clone https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git master
 source 'https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git'
 ```
 
-## Typescript
+## TypeScript
 
 - [reactnative.dev](https://reactnative.dev/docs/typescript)
 - [react-native.cn](https://www.react-native.cn/docs/typescript)
 - [React TypeScript Cheatsheet](https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/hooks)
 
-### Typescript && React Native
 
-### Typescript && React Navigation
+### TypeScript && React Native
+
+### TypeScript && React Navigation
+
+### TypeScript && Jest
+
+
+
 
 #### Typing [...]
 

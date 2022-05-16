@@ -12,8 +12,8 @@ import renderer from 'react-test-renderer';
 
 
 // ...
-test('renders the correctly', async () => {
-  const tree = await renderer.create(<App />).toJSON();
+test('renders the correctly', () => {
+  const tree = renderer.create(<App />).toJSON();
   expect(tree).toMatchSnapshot();
 });
 
@@ -27,7 +27,7 @@ describe('AppStack', () => {
     await waitFor(() => getByText('RecentScreen'));
   });
 
-  it('MainDrawer contains a button linking to Setting Screen', async () => {
+  it('MainDrawer contains a buttons linking to other screens', async () => {
     const component = (
       <NavigationContainer>
         <MainDrawerNavigator />
@@ -35,7 +35,10 @@ describe('AppStack', () => {
     );
 
     const {findByText} = render(component);
-    const button = await findByText('Setting');
-    expect(button).toBeTruthy();
+    const setting = await findByText('Setting');
+    const finance = await findByText('Finance');
+    expect(setting).toBeTruthy();
+    expect(finance).toBeTruthy();
+
   });
 });

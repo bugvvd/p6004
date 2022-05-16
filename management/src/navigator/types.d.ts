@@ -14,6 +14,7 @@ export type MainStackParamList = {
 export type MainDrawerParamList = {
   Home: undefined;
   Setting: undefined;
+  Finance: undefined;
 };
 
 export type HomeTabParamList = {

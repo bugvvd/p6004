@@ -7,11 +7,11 @@
  */
 
 import React from 'react';
-import type {ReactNode} from 'react';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import Root from './src/navigator';
 
-const App: () => ReactNode = () => {
+
+const App = () => {
   return (
     <SafeAreaProvider>
       <Root />
