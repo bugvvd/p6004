@@ -34,12 +34,12 @@ npx react-native init user
 
 ## dependencies
 
-| Package                      | Version   | Doc                                                                                      | Ref | Remarks                                                                                                                                                         |
-| ---------------------------- | --------- | ---------------------------------------------------------------------------------------- | --- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `react-native-reanimated`    | `^2.8.0`  | [doc](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/installation) |     | [bable plugin](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/installation#babel-plugin) has to be listed last. Hermes (crash) was a problem. But it is ok now.|
-| `react-native-vision-camera` | `^2.13.2` | [doc](https://mrousavy.com/react-native-vision-camera/docs/guides)                       |     | `react-native-camera` deprecated.                                                                                                                               |
-|                              |           |                                                                                          |     |                                                                                                                                                                 |
-|                              |           |                                                                                          |     |                                                                                                                                                                 |
+| Package                      | Version   | Doc                                                                                      | Ref | Remarks                                                                                                                                                                               |
+| ---------------------------- | --------- | ---------------------------------------------------------------------------------------- | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `react-native-reanimated`    | `^2.8.0`  | [doc](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/installation) |     | [bable plugin](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/installation#babel-plugin) has to be listed last. Hermes (crash) was a problem. But it is ok now. |
+| `react-native-vision-camera` | `^2.13.2` | [doc](https://mrousavy.com/react-native-vision-camera/docs/guides)                       |     | `react-native-camera` deprecated.                                                                                                                                                     |
+|                              |           |                                                                                          |     |                                                                                                                                                                                       |
+|                              |           |                                                                                          |     |                                                                                                                                                                                       |
 
 ## devDependencies
 
@@ -150,15 +150,11 @@ source 'https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git'
 - [react-native.cn](https://www.react-native.cn/docs/typescript)
 - [React TypeScript Cheatsheet](https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/hooks)
 
-
 ### TypeScript && React Native
 
 ### TypeScript && React Navigation
 
 ### TypeScript && Jest
-
-
-
 
 #### Typing [...]
 
@@ -168,6 +164,11 @@ unit test
 integration test
 e2e test
 concurrent test?
+
+ref
+
+- [如何自动化测试 React Native 项目 (上篇) - 核心思想与 E2E 自动化](https://blog.csdn.net/muyu114/article/details/122565053?spm=1001.2014.3001.5501)
+- [如何自动化测试 React Native 项目 (下篇) - 单元测试](https://blog.csdn.net/muyu114/article/details/122565441)
 
 ### Setup
 
@@ -251,8 +252,10 @@ module.exports = {
 
 ### Test Redux
 
-## CI/CD
+- [Writing Tests](https://redux.js.org/usage/writing-tests)
+- [redux-mock-store](https://github.com/reduxjs/redux-mock-store)
 
+## CI/CD
 
 ## Pending
 

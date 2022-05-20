@@ -17,6 +17,7 @@ import {
   Text,
   useColorScheme,
   View,
+  TouchableOpacity
 } from 'react-native';
 
 import {
@@ -33,6 +34,9 @@ const Section: React.FC<{
   const isDarkMode = useColorScheme() === 'dark';
   return (
     <View style={styles.sectionContainer}>
+      <TouchableOpacity testID=''></TouchableOpacity>
+      <View testID=''></View>
+      <Text testID=''></Text>
       <Text
         style={[
           styles.sectionTitle,
