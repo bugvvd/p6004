@@ -1,10 +1,13 @@
+// core
 import React from 'react';
-import {createDrawerNavigator} from '@react-navigation/drawer';
 
+// components
+import {createDrawerNavigator} from '@react-navigation/drawer';
 import HomeTabNavigator from '../HomeTabNavigator';
 import SettingScreen from '../../../screens/SettingScreen';
 import FinanceScreen from '../../../screens/FinanceScreen';
 
+// types
 import {MainDrawerParamList} from '../../../../lib/types/navigator';
 
 const Drawer = createDrawerNavigator<MainDrawerParamList>();

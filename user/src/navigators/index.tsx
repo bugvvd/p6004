@@ -1,4 +1,7 @@
+// core
 import React from 'react';
+
+// components
 import {NavigationContainer} from '@react-navigation/native';
 import AuthStackNavigator from './AuthStackNavigator';
 import MainStackNavigator from './MainStackNavigator';

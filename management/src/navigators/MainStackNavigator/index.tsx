@@ -1,11 +1,14 @@
+// core
 import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
 
+// components
+import {createStackNavigator} from '@react-navigation/stack';
 import MainDrawerNavigator from './MainDrawerNavigator';
 import ChatRoomScreen from '../../screens/ChatRoomScreen';
 import ScanScreen from '../../screens/ScanScreen';
 import UnitDetailScreen from '../../screens/UnitDetailScreen';
 
+// types
 import {MainStackParamList} from '../../../lib/types/navigator';
 
 const Stack = createStackNavigator<MainStackParamList>();

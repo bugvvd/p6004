@@ -1,16 +1,16 @@
+// core
 import React from 'react';
+
+// components
 import {View, Text, StyleSheet} from 'react-native';
 
-export default function SettingScreen() {
+// types
+import {SettingScreenProps} from '../../../lib/types/screen';
+
+export default function SettingScreen({navigation, route}: SettingScreenProps) {
   return (
-    <View style={styles.container}>
+    <View>
       <Text>SettingScreen</Text>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});

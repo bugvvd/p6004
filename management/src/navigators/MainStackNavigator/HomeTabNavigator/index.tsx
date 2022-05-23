@@ -1,9 +1,12 @@
+// core
 import React from 'react';
-import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 
+// components
+import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import RecentScreen from '../../../screens/RecentScreen';
 import ProjectScreen from '../../../screens/ProjectScreen';
 
+// types
 import {HomeTabParamList} from '../../../../lib/types/navigator';
 
 const Tab = createMaterialTopTabNavigator<HomeTabParamList>();
