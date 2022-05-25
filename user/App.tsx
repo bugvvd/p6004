@@ -8,13 +8,20 @@
 
 import React from 'react';
 import type {ReactNode} from 'react';
+
+// Providers
+import {Provider as PaperProvider} from 'react-native-paper';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
+
+// Components
 import Root from './src/navigators';
 
 const App: () => ReactNode = () => {
   return (
     <SafeAreaProvider>
-      <Root />
+      <PaperProvider>
+        <Root />
+      </PaperProvider>
     </SafeAreaProvider>
   );
 };

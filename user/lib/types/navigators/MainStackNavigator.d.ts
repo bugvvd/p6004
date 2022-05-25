@@ -1,6 +1,6 @@
 import {MainDrawerParamList} from './MainDrawerNavigator';
 
-export type MainStackParamList = {
+export declare type MainStackParamList = {
   ChatRoom: {unitId: string};
   MainDrawer: MainDrawerParamList;
   UnitDetail: {unitId: string};

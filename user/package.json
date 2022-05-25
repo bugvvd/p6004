@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "device:android": "adb reverse tcp:8082 tcp:8082",
-    "start:android": "react-native start --port=8081 --reset-cache",
+    "start:android": "react-native start --port=8082 --reset-cache",
     "android": "react-native run-android --port=8082",
     "start:ios": "react-native start --reset-cache",
     "ios": "react-native run-ios",
@@ -23,9 +23,11 @@
     "react": "17.0.2",
     "react-native": "0.68.2",
     "react-native-gesture-handler": "^2.4.1",
+    "react-native-paper": "^4.12.1",
     "react-native-reanimated": "^2.8.0",
     "react-native-safe-area-context": "^4.2.5",
-    "react-native-screens": "^3.13.1"
+    "react-native-screens": "^3.13.1",
+    "react-native-vector-icons": "^9.1.0"
   },
   "devDependencies": {
     "@babel/runtime": "^7.12.5",

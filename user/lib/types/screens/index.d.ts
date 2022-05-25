@@ -6,24 +6,24 @@ import type {
   AuthStackParamList,
   MainDrawerParamList,
   MainStackParamList,
-} from '../navigator';
+} from '../navigators';
 
 /**
  * Multi-Usage Screens
  */
 
-export type ScanScreenProps = NativeStackScreenProps<>;
+export declare type ScanScreenProps = NativeStackScreenProps<>;
 
 /**
  * Auth Stack Screens
  */
 
-export type LoginScreenProps = NativeStackScreenProps<
+export declare type LoginScreenProps = NativeStackScreenProps<
   AuthStackParamList,
   'Login'
 >;
 
-export type RegisterScreenProps = NativeStackScreenProps<
+export declare type RegisterScreenProps = NativeStackScreenProps<
   AuthStackParamList,
   'Register'
 >;
@@ -32,12 +32,12 @@ export type RegisterScreenProps = NativeStackScreenProps<
  * Main Stack Screens
  */
 
-export type ChatRoomScreenProps = NativeStackScreenProps<
+export declare type ChatRoomScreenProps = NativeStackScreenProps<
   MainStackParamList,
   'ChatRoom'
 >;
 
-export type UnitDetailScreenProps = NativeStackScreenProps<
+export declare type UnitDetailScreenProps = NativeStackScreenProps<
   MainStackParamList,
   'UnitDetail'
 >;
@@ -46,9 +46,12 @@ export type UnitDetailScreenProps = NativeStackScreenProps<
  * Main Drawer Screens
  */
 
-export type HomeScreenProps = DrawerScreenProps<MainDrawerParamList, 'Home'>;
+export declare type HomeScreenProps = DrawerScreenProps<
+  MainDrawerParamList,
+  'Home'
+>;
 
-export type SettingScreenProps = DrawerScreenProps<
+export declare type SettingScreenProps = DrawerScreenProps<
   MainDrawerParamList,
   'Setting'
 >;

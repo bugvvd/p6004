@@ -15,13 +15,6 @@ describe('Screen rendering correctly', () => {
     expect(content.length).toBe(1);
   });
 
-  it('should render login screen', () => {
-    let props: any;
-    const {getAllByText} = render(<LoginScreen {...props} />);
-    const content = getAllByText('LoginScreen');
-    expect(content.length).toBe(1);
-  });
-
   it('should render register screen', () => {
     let props: any;
     const {getAllByText} = render(<RegisterScreen {...props} />);
