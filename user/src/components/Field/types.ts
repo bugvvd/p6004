@@ -3,7 +3,7 @@ export enum FieldTypes {
 }
 
 export type FieldProps = {
-  type: 'plain' | 'picker';
+  type?: 'plain' | 'picker';
   name: string;
   placeholder?: string;
   description?: string;

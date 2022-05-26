@@ -6,11 +6,14 @@ import Form from '..';
 // afterAll(()=>{})
 
 describe('Form', () => {
-  // input fields
+  /* render */
   it('should render', () => {
     let props: any;
     render(<Form {...props} />);
   });
+
+  /* Form Components */
+  /* fields */
   it("should render 2 field placeholder: 1 'Field1' and 1 'Field2'", () => {
     let props: any;
     const testFormProps = [
@@ -67,7 +70,7 @@ describe('Form', () => {
   });
 
   // TODO: input validation onBlur + error message
-  it("should fire `onBlur` callback 1 time for each field once textInput field 'Field1' and 'Field2' go blur", async () => {
+  it("should fire `onBlur` validation callback 1 time for each field once textInput field 'Field1' and 'Field2' go blur", async () => {
     const onUsernameInputFieldBlurMock = jest.fn();
     const onPasswordInputFieldBlurMock = jest.fn();
     let props: any;
@@ -100,8 +103,11 @@ describe('Form', () => {
     expect(onUsernameInputFieldBlurMock).toHaveBeenCalledTimes(1);
     expect(onPasswordInputFieldBlurMock).toHaveBeenCalledTimes(1);
   });
-  // action buttons
 
+  /** other form components */
+
+  /* Actions */
+  /* buttons */
   it("should render 2 buttons: 1 'Button1' and 1 'Button2'", () => {
     let props: any;
 
@@ -137,8 +143,6 @@ describe('Form', () => {
     });
     expect(button1Callback).toHaveBeenCalledTimes(1);
     expect(button2Callback).toHaveBeenCalledTimes(1);
-
-    // payloads check to be put in LoginScreen
   });
 
   // TODO: register navigation

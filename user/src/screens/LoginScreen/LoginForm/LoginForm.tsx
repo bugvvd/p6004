@@ -1,7 +1,7 @@
 import React from 'react';
 
 // components
-import Form from '../../components/Form';
+import Form from '../../../components/Form';
 
 // types
 import type LoginFormProps from './types';

@@ -7,7 +7,7 @@ import {
   ScrollView,
   TouchableWithoutFeedback,
 } from 'react-native';
-import LoginForm from './LoginForm';
+import LoginForm from './LoginForm/LoginForm';
 
 // types
 import {LoginScreenProps} from '../../../lib/types/screens';
@@ -29,17 +29,15 @@ export default function LoginScreen({
     return false;
   };
 
-  const onSubmit = (): void => {
-    console.log('submit');
+  const onPressLogin = (): void => {
+    console.log('login');
     // wrap up username + passwod -> dispatch
   };
 
   const onPressRegister = (): void => {
     console.log('register');
-    // navigate to register
+    navigation.navigate('Register');
   };
-
-  console.log(username, password);
 
   return (
     <TouchableWithoutFeedback
@@ -63,7 +61,7 @@ export default function LoginScreen({
             },
           ]}
           action={[
-            {name: 'Login', callback: onSubmit},
+            {name: 'Login', callback: onPressLogin},
             {name: 'Register', callback: onPressRegister},
           ]}
         />

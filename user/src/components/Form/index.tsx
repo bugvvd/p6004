@@ -3,6 +3,7 @@ import React from 'react';
 // components
 import {View} from 'react-native';
 import {Button, Text, TextInput} from 'react-native-paper';
+import Field from '../Field';
 
 // types
 import {FormProps} from './types';
@@ -14,13 +15,8 @@ const Form = ({field, action}: FormProps): JSX.Element => {
     <View>
       {/* error messages */}
       {/* input fields */}
-      {field?.map(item => (
-        <TextInput
-          placeholder={item.placeholder ?? item.name}
-          key={item.name}
-          onChangeText={item.onValueChange}
-          onBlur={item.validate}
-        />
+      {field?.map(props => (
+        <Field key={props.name} {...props} />
       ))}
       {/* actions */}
       {action?.map(item => (

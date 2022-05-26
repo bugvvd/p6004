@@ -1,8 +1,6 @@
 import React from 'react';
 import {render, fireEvent, waitFor} from '@testing-library/react-native';
 import ChatRoomScreen from '../ChatRoomScreen';
-import LoginScreen from '../LoginScreen';
-import RegisterScreen from '../RegisterScreen';
 import ScanScreen from '../ScanScreen';
 import SettingScreen from '../SettingScreen';
 import UnitDetailScreen from '../UnitDetailScreen';
@@ -15,12 +13,7 @@ describe('Screen rendering correctly', () => {
     expect(content.length).toBe(1);
   });
 
-  it('should render register screen', () => {
-    let props: any;
-    const {getAllByText} = render(<RegisterScreen {...props} />);
-    const content = getAllByText('RegisterScreen');
-    expect(content.length).toBe(1);
-  });
+ 
   it('should render scan screen', () => {
     let props: any;
     const {getAllByText} = render(<ScanScreen {...props} />);
