@@ -6,7 +6,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import AuthStackNavigator from './AuthStackNavigator';
 import MainStackNavigator from './MainStackNavigator';
 
-let isLoggedIn = true;
+let isLoggedIn = false;
 
 function Navigator() {
   return isLoggedIn ? <MainStackNavigator /> : <AuthStackNavigator />;

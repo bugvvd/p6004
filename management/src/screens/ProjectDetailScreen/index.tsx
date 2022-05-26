@@ -1,19 +1,20 @@
-
 import React from 'react';
 
 // components
 import {View, Text} from 'react-native';
 
 // types
-import {ProjectScreenProps} from '../../../lib/types/screen';
+import {ProjectDetailScreenProps} from '../types';
 
-export default function ProjectDetailScreen({
+const ProjectDetailScreen = ({
   navigation,
   route,
-}: ProjectScreenProps) {
+}: ProjectDetailScreenProps): JSX.Element => {
   return (
     <View>
       <Text>ProjectDetailScreen</Text>
     </View>
   );
-}
+};
+
+export default ProjectDetailScreen;

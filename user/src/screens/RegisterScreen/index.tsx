@@ -7,15 +7,15 @@ import {
   StyleSheet,
   TouchableWithoutFeedback,
 } from 'react-native';
-
-// types
-import {RegisterScreenProps} from '../../../lib/types/screens';
 import RegisterForm from './RegisterForm/RegisterForm';
 
-export default function RegisterScreen({
+// types
+import {RegisterScreenProps} from '../types';
+
+const RegisterScreen = ({
   navigation,
   route,
-}: RegisterScreenProps): JSX.Element {
+}: RegisterScreenProps): JSX.Element => {
   const [username, setUsername] = React.useState<string | null>(null);
   const [password, setPassword] = React.useState<string | null>(null);
 
@@ -74,7 +74,7 @@ export default function RegisterScreen({
       </ScrollView>
     </TouchableWithoutFeedback>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -82,3 +82,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default RegisterScreen;

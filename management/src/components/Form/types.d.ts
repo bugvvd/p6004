@@ -1,12 +1,12 @@
 import type {FieldProps} from '../Field/types';
 
-export type ActionOptionProps = {
+export declare type ActionOptionProps = {
   name: string;
   callback?: () => void;
   options?: any;
 };
 
-export interface FormProps {
+export declare interface FormProps {
   field?: Array<FieldProps>;
   action?: Array<ActionOptionProps>;
 }

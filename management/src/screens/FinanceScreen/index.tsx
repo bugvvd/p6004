@@ -1,16 +1,20 @@
-
 import React from 'react';
 
 // components
 import {View, Text} from 'react-native';
 
 // types
-import type {FinanceScreenProps} from '../../../lib/types/screen';
+import type {FinanceScreenProps} from '../types';
 
-export default function FinanceScreen({navigation, route}: FinanceScreenProps) {
+const FinanceScreen = ({
+  navigation,
+  route,
+}: FinanceScreenProps): JSX.Element => {
   return (
     <View>
       <Text>FinanceScreen</Text>
     </View>
   );
-}
+};
+
+export default FinanceScreen;

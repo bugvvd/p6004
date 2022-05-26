@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 // components
@@ -9,7 +8,7 @@ import ScanScreen from '../../screens/ScanScreen';
 import UnitDetailScreen from '../../screens/UnitDetailScreen';
 
 // types
-import {MainStackParamList} from '../../../lib/types/navigator';
+import {MainStackParamList} from './types';
 
 const Stack = createStackNavigator<MainStackParamList>();
 

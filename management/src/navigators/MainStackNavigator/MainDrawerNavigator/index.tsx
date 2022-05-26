@@ -8,7 +8,7 @@ import SettingScreen from '../../../screens/SettingScreen';
 import FinanceScreen from '../../../screens/FinanceScreen';
 
 // types
-import {MainDrawerParamList} from '../../../../lib/types/navigator';
+import {MainDrawerParamList} from './types';
 
 const Drawer = createDrawerNavigator<MainDrawerParamList>();
 

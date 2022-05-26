@@ -10,12 +10,9 @@ import {
 import LoginForm from './LoginForm/LoginForm';
 
 // types
-import {LoginScreenProps} from '../../../lib/types/screens';
+import {LoginScreenProps} from '../types';
 
-export default function LoginScreen({
-  navigation,
-  route,
-}: LoginScreenProps): JSX.Element {
+const LoginScreen = ({navigation, route}: LoginScreenProps): JSX.Element => {
   const [username, setUsername] = React.useState<string | null>(null);
   const [password, setPassword] = React.useState<string | null>(null);
 
@@ -68,7 +65,7 @@ export default function LoginScreen({
       </ScrollView>
     </TouchableWithoutFeedback>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -76,3 +73,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default LoginScreen;

@@ -1,17 +1,18 @@
-
 import React from 'react';
 
 // components
 import {View, Text} from 'react-native';
 
 // types
-import type {RecentScreenProps} from '../../../lib/types/screen';
+import type {RecentScreenProps} from '../types';
 
-export default function RecentScreen({navigation, route}: RecentScreenProps) {
+const RecentScreen = ({navigation, route}: RecentScreenProps): JSX.Element => {
   return (
     <View>
       <Text>RecentScreen</Text>
       <Text testID="RecentScreenTestID"></Text>
     </View>
   );
-}
+};
+
+export default RecentScreen;

@@ -8,7 +8,7 @@ import RegisterScreen from '../../screens/RegisterScreen';
 import ScanScreen from '../../screens/ScanScreen';
 
 // types
-import { AuthStackParamList } from '../../../lib/types/navigator';
+import { AuthStackParamList } from './types';
 
 const Stack = createStackNavigator<AuthStackParamList>();
 

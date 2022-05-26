@@ -4,15 +4,14 @@ import React from 'react';
 import {View, Text} from 'react-native';
 
 // types
-import {HomeScreenProps} from '../../../lib/types/screens';
+import {HomeScreenProps} from '../types';
 
-export default function HomeScreen({
-  navigation,
-  route,
-}: HomeScreenProps): JSX.Element {
+const HomeScreen = ({navigation, route}: HomeScreenProps): JSX.Element => {
   return (
     <View>
       <Text>HomeScreen</Text>
     </View>
   );
-}
+};
+
+export default HomeScreen;

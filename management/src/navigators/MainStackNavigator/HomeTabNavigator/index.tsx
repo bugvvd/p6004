@@ -7,7 +7,7 @@ import RecentScreen from '../../../screens/RecentScreen';
 import ProjectScreen from '../../../screens/ProjectScreen';
 
 // types
-import {HomeTabParamList} from '../../../../lib/types/navigator';
+import {HomeTabParamList} from './types';
 
 const Tab = createMaterialTopTabNavigator<HomeTabParamList>();
 

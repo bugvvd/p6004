@@ -4,15 +4,17 @@ import React from 'react';
 import {View, Text} from 'react-native';
 
 // types
-import {UnitDetailScreenProps} from '../../../lib/types/screens';
+import {UnitDetailScreenProps} from '../types';
 
-export default function UnitDetailScreen({
+const UnitDetailScreen = ({
   navigation,
   route,
-}: UnitDetailScreenProps): JSX.Element {
+}: UnitDetailScreenProps): JSX.Element => {
   return (
     <View>
       <Text>UnitDetailScreen</Text>
     </View>
   );
-}
+};
+
+export default UnitDetailScreen;

@@ -1,8 +1,8 @@
-export enum FieldTypes {
+export declare enum FieldTypes {
   plain,
 }
 
-export type FieldProps = {
+export declare type FieldProps = {
   type?: 'plain' | 'picker';
   name: string;
   placeholder?: string;

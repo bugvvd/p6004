@@ -1,16 +1,20 @@
-
 import React from 'react';
 
 // components
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text} from 'react-native';
 
 // types
-import {SettingScreenProps} from '../../../lib/types/screen';
+import {SettingScreenProps} from '../types';
 
-export default function SettingScreen({navigation, route}: SettingScreenProps) {
+const SettingScreen = ({
+  navigation,
+  route,
+}: SettingScreenProps): JSX.Element => {
   return (
     <View>
       <Text>SettingScreen</Text>
     </View>
   );
-}
+};
+
+export default SettingScreen;

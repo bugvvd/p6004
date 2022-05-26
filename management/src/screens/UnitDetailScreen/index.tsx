@@ -1,22 +1,20 @@
-
 import React from 'react';
 
 // components
 import {View, Text} from 'react-native';
 
 // types
-import {UnitDetailScreenProps} from '../../../lib/types/screen';
+import {UnitDetailScreenProps} from '../types';
 
-export default function UnitDetailScreen({
+const UnitDetailScreen = ({
   navigation,
   route,
-}: UnitDetailScreenProps) {
-  let unitId = route.params.unitId;
+}: UnitDetailScreenProps): JSX.Element => {
   return (
     <View>
       <Text>UnitDetailScreen</Text>
-      <Text>{unitId}</Text>
-      <Text>{unitId}</Text>
     </View>
   );
-}
+};
+
+export default UnitDetailScreen;
