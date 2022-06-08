@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 // components
@@ -10,7 +9,9 @@ import MainStackNavigator from './MainStackNavigator';
 import {useAppSelector} from '../redux/typedReduxHooks';
 
 function Navigator() {
-  const isLoggedIn: boolean = useAppSelector(state => state.login.isLoggedIn);  
+  const isLoggedIn: boolean = useAppSelector(
+    state => state.loginState.isLoggedIn,
+  );
   return isLoggedIn ? <MainStackNavigator /> : <AuthStackNavigator />;
 }
 

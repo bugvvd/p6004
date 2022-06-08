@@ -1,29 +1,33 @@
 import React from 'react';
-import {render, fireEvent, waitFor} from '@testing-library/react-native';
+import {act, render, fireEvent, waitFor} from '@testing-library/react-native';
 
-// redux
-import {Provider} from 'react-redux';
-import {store} from '../../../redux/store';
-import configureStore from 'redux-mock-store';
-import thunk from 'redux-thunk';
+// api
+import * as loginAPI from '../../../api/loginRequest';
 
 // screen
 import LoginScreen from '..';
 
-const middlewares = [thunk];
-const mockStore = configureStore(middlewares);
+// utils
+import {renderWithContext} from '../../../../jest/utils/renderWithContext';
+import {getStoreWithState} from '../../../redux/store';
+import {Provider} from 'react-redux';
 
 describe('LoginScreen', () => {
+  beforeEach(() => {
+    // jest.useFakeTimers();
+  });
+  afterEach(() => {
+    // jest.useRealTimers();
+  });
   /* render */
-  it.todo('should render ');
-  it.todo("should render if 'isLoggedIn: false' ");
-  it.todo("should not render if 'isLoggedIn: true' ");
+  it('should render ', () => {
+    let props: any;
+    renderWithContext(<LoginScreen {...props} />);
+  });
   it("should render 2 field placeholder: 1 'Username' and 1 'Password'", () => {
     let props: any;
-    const {queryAllByPlaceholderText} = render(
-      <Provider store={store}>
-        <LoginScreen {...props} />
-      </Provider>,
+    const {queryAllByPlaceholderText} = renderWithContext(
+      <LoginScreen {...props} />,
     );
     const usernameField = queryAllByPlaceholderText('Username');
     const passwordField = queryAllByPlaceholderText('Password');
@@ -34,11 +38,7 @@ describe('LoginScreen', () => {
   });
   it("should render 2 buttons: 1 'Login' and 1 'Register'", () => {
     let props: any;
-    const {queryAllByText} = render(
-      <Provider store={store}>
-        <LoginScreen {...props} />
-      </Provider>,
-    );
+    const {queryAllByText} = renderWithContext(<LoginScreen {...props} />);
     const loginButton = queryAllByText('Login');
     const registerButton = queryAllByText('Register');
     expect(loginButton).toBeTruthy();
@@ -47,37 +47,25 @@ describe('LoginScreen', () => {
     expect(registerButton.length).toBe(1);
   });
 
-  /* action */
-  it("should call 'loginSlice/login' thunk on pressing 'Login' button", async () => {
+  test("'loginRequest' API on pressing 'Login' button", async () => {
     let props: any;
-    const storeMock = mockStore({});
-    const {getByText} = render(
-      <Provider store={storeMock}>
-        <LoginScreen {...props} />
-      </Provider>,
-    );
+    const loginRequestSpy = jest
+      .spyOn(loginAPI, 'loginRequest')
+      .mockImplementationOnce(() => Promise.resolve(true));
+    const {getByText} = renderWithContext(<LoginScreen {...props} />);
     const loginButton = getByText('Login');
     await waitFor(() => {
       fireEvent.press(loginButton);
     });
-    const actionMock = storeMock.getActions();
-    expect(actionMock.length).toBe(2);
-    expect(actionMock[0].type).toEqual('loginSlice/login/pending');
-    expect(actionMock[1].type).toEqual('loginSlice/login/fulfilled');
-    // Field value varies by loginPayload
-    expect(Object.keys(actionMock[1].payload)).toEqual([
-      'username',
-      'token',
-      'license',
-    ]);
+    expect(loginRequestSpy).toHaveBeenCalledTimes(1);
+    loginRequestSpy.mockRestore();
   });
-  it("should call 'navigation.navigate()' to RegisterScreen on pressing 'Register' Button", async () => {
+  /* register */
+  it("should call navigation.navigate to RegisterScreen on pressing 'Register' Button", async () => {
     let props: any;
     const navigateMock = jest.fn();
-    const {getByText} = render(
-      <Provider store={store}>
-        <LoginScreen {...props} navigation={{navigate: navigateMock}} />
-      </Provider>,
+    const {getByText} = renderWithContext(
+      <LoginScreen {...props} navigation={{navigate: navigateMock}} />,
     );
     const registerButton = getByText('Register');
     await waitFor(() => {
@@ -86,8 +74,12 @@ describe('LoginScreen', () => {
     expect(navigateMock).toHaveBeenCalledWith('Register');
   });
 
-  /* API usage */
-  it.todo("should call login API pressing 'Login' button");
   /* exception handling */
-  it.todo('loginSlice/login thunk time out handling');
+  it.todo(
+    'should show validation error message on validating invalid username',
+  );
+  it.todo(
+    'should show validation error message on validating invalid password',
+  );
+  it.todo("should show login error message on receiving error from 'loginAPI'");
 });

@@ -1,19 +1,20 @@
 import {configureStore} from '@reduxjs/toolkit';
-import loginReducer from './slices/loginSlice';
+import loginStateReducer from './slices/loginSlice';
 
 export const reducer = {
-  login: loginReducer,
+  loginState: loginStateReducer,
 };
 
 /* nomal store */
 export const store = configureStore({
-  reducer: reducer,
+  reducer,
 });
+
+/* dynamically configure store with preloadedState for testing purpose */
+// refer to configureStore.ts source code for more
+export const getStoreWithState = (preloadedState?: RootState) => {
+  return configureStore({reducer, preloadedState});
+};
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
-
-/* dynamically configure store with preloadedState for testing purpose */
-export const getStoreWithState = (preloadedState: RootState) => {
-  return configureStore({reducer, preloadedState});
-};
