@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 // components
@@ -14,7 +13,9 @@ const Drawer = createDrawerNavigator<MainDrawerParamList>();
 
 const MainDrawerNavigator: React.FC = () => {
   return (
-    <Drawer.Navigator initialRouteName="Home">
+    <Drawer.Navigator
+      initialRouteName="Home"
+      screenOptions={{swipeEnabled: false}}>
       <Drawer.Screen name="Home" component={HomeTabNavigator} />
       <Drawer.Screen name="Finance" component={FinanceScreen} />
       <Drawer.Screen name="Setting" component={SettingScreen} />
