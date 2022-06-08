@@ -2,17 +2,12 @@ import React from 'react';
 import {render, fireEvent, waitFor} from '@testing-library/react-native';
 import Form from '..';
 
-// beforeAll(()=>{})
-// afterAll(()=>{})
-
 describe('Form', () => {
   /* render */
   it('should render', () => {
     let props: any;
     render(<Form {...props} />);
   });
-
-  /* Form Components */
   /* fields */
   it("should render 2 field placeholder: 1 'Field1' and 1 'Field2'", () => {
     let props: any;
@@ -69,7 +64,7 @@ describe('Form', () => {
     expect(getByDisplayValue(testInput2)).toBeTruthy();
   });
 
-  // TODO: input validation onBlur + error message
+  it.todo("validation and error message")
   it("should fire `onBlur` validation callback 1 time for each field once textInput field 'Field1' and 'Field2' go blur", async () => {
     const onUsernameInputFieldBlurMock = jest.fn();
     const onPasswordInputFieldBlurMock = jest.fn();
@@ -104,9 +99,6 @@ describe('Form', () => {
     expect(onPasswordInputFieldBlurMock).toHaveBeenCalledTimes(1);
   });
 
-  /** other form components */
-
-  /* Actions */
   /* buttons */
   it("should render 2 buttons: 1 'Button1' and 1 'Button2'", () => {
     let props: any;
@@ -144,6 +136,4 @@ describe('Form', () => {
     expect(button1Callback).toHaveBeenCalledTimes(1);
     expect(button2Callback).toHaveBeenCalledTimes(1);
   });
-
-  // TODO: register navigation
 });

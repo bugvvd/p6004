@@ -11,42 +11,102 @@ Always refer to doc, always
 npx react-native init user
 ```
 
-## npm/yarn script
-
-`package.json`
+## dependencies
 
 ```json
 {
+  "name": "user",
+  "version": "0.0.1",
+  "private": true,
   "scripts": {
+    "device:android": "adb reverse tcp:8082 tcp:8082",
+    "start:android": "react-native start --port=8082 --reset-cache",
     "android": "react-native run-android --port=8082",
-    "clean": "cd android && ./gradlew clean && cd ..",
+    "start:ios": "react-native start --reset-cache",
+    "ios": "react-native run-ios",
     "dev:doc": "code ../doc/user.md",
-    "ios": "react-native run-ios --port=8082",
-    "start": "react-native start --port=8082",
-    "test": "jest",
+    "clean": "cd android && ./gradlew clean && cd ..",
+    "test": "jest --watch-all --detectOpenHandles",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "device": "adb reverse tcp:8082 tcp:8082",
     "getDefaultDB": "adb root && adb pull /data/data/com.user/files/default.realm && sudo chmod 777 default.realm",
     "eraseDefaultDB": "adb root && adb shell rm /data/data/com.user/files/default.realm"
+  },
+  "dependencies": {
+    "@react-navigation/drawer": "^6.4.1",
+    "@react-navigation/native": "^6.0.10",
+    "@react-navigation/native-stack": "^6.6.2",
+    "@react-navigation/stack": "^6.2.1",
+    "react": "17.0.2",
+    "react-native": "0.68.2",
+    "react-native-gesture-handler": "^2.4.1",
+    "react-native-paper": "^4.12.1",
+    "react-native-reanimated": "^2.8.0",
+    "react-native-safe-area-context": "^4.2.5",
+    "react-native-screens": "^3.13.1",
+    "react-native-vector-icons": "^9.1.0"
+  },
+  "devDependencies": {
+    "@babel/runtime": "^7.12.5",
+    "@react-native-community/eslint-config": "^2.0.0",
+    "@testing-library/jest-native": "^4.0.4",
+    "@testing-library/react-native": "^9.1.0",
+    "@types/jest": "^27.5.1",
+    "@types/react-native": "^0.67.7",
+    "@types/react-test-renderer": "^18.0.0",
+    "babel-jest": "^28.0.3",
+    "eslint": "^7.32.0",
+    "jest": "^27.0.0",
+    "metro-react-native-babel-preset": "^0.67.0",
+    "react-test-renderer": "17.0.2",
+    "ts-jest": "^28.0.2",
+    "typescript": "^4.6.4"
+  },
+  "resolutions": {
+    "@types/react": "^17"
   }
 }
 ```
 
-## dependencies
 
-| Package                      | Version   | Doc                                                                                      | Ref | Remarks                                                                                                                                                                               |
-| ---------------------------- | --------- | ---------------------------------------------------------------------------------------- | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `react-native-reanimated`    | `^2.8.0`  | [doc](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/installation) |     | [bable plugin](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/installation#babel-plugin) has to be listed last. Hermes (crash) was a problem. But it is ok now. |
-| `react-native-vision-camera` | `^2.13.2` | [doc](https://mrousavy.com/react-native-vision-camera/docs/guides)                       |     | `react-native-camera` deprecated.                                                                                                                                                     |
-|                              |           |                                                                                          |     |                                                                                                                                                                                       |
-|                              |           |                                                                                          |     |                                                                                                                                                                                       |
+### Navigation
+`@react-navigation/native`
+- `^6.0.10` 
+- [doc](https://reactnavigation.org/docs/getting-started)
+- auto link for rn > 0.60 
+
+`react-native-screens`
+`react-native-safe-area-context`
+
+#### Stack Navigation
+
+#### Drawer Navigation
+
+`@react-navigation/drawer`
+`react-native-gesture-handler`
+`react-native-reanimated`
+- `^2.8.0`  
+- [doc](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/installation) 
+- [bable plugin](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/installation#babel-plugin) has to be listed last. Hermes (crash) was a problem. But it is ok now. 
+
+### UI
+`react-native-paper`
+`react-native-vector-icons`
+
+### Utilities
+`react-native-vision-camera` 
+- `^2.13.2` 
+- [doc](https://mrousavy.com/react-native-vision-camera/docs/guides) 
+- `react-native-camera` deprecated.
+
+
+
 
 ## devDependencies
 
-| Package                  | Version  | Doc                                                                                                                                                                                       | Ref | Remarks |
-| ------------------------ | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ------- |
-| `react-native-code-push` | `^7.0.4` | [Android](https://github.com/microsoft/react-native-code-push/blob/master/docs/setup-android.md) [IOS](https://github.com/microsoft/react-native-code-push/blob/master/docs/setup-ios.md) |     |         |
-|                          |          |                                                                                                                                                                                           |     |         |
+### CI/CD
+`react-native-code-push`
+- `^7.0.4`
+- [Android](https://github.com/microsoft/react-native-code-push/blob/master/docs/setup-android.md) [IOS](https://github.com/microsoft/react-native-code-push/blob/master/docs/setup-ios.md) 
 
 ```shell
 yarn
@@ -144,6 +204,39 @@ git clone https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git master
 source 'https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git'
 ```
 
+## Development
+
+### Redux
+
+**unsubscription from store**
+
+[redux thunk: Modern React Redux Toolkit - Login & User Registration Tutorial and Example](https://cloudnweb.dev/2021/02/modern-react-redux-tutotials-redux-toolkit-login-user-registration/)
+[Redux Toolkit: createAsyncThunk](https://redux-toolkit.js.org/api/createAsyncThunk#overview)
+
+`createAsyncThunk` parameters
+- type value: string
+- a payloadCreator callback
+- and an options object.
+
+return value
+- 
+
+#### RTK Query data fetching API 
+[Redux Toolkit: RTK Query Overview](https://redux-toolkit.js.org/rtk-query/overview)
+
+#### Typing
+
+Typed Redux Hooks is a `react-redux` thing: [redux: Define Typed hooks](https://redux.js.org/usage/usage-with-typescript#define-typed-hooks)
+
+#### Best Practice
+
+1. [multiple actions/dispatches](https://stackoverflow.com/q/48172819/18748524)
+Dispatching multiple actions in a row should be avoided with redux. You have dispatch(setData(data)); dispatch(setLoading(false)); which will trigger 2 store changes and 2 renders. If you combine that into a single action, and set the loading state to false for that action, then you'll only have 1 re-render in your app.
+
+2. [test async](https://stackoverflow.com/a/48227479/18748524)
+For async action creators using Redux Thunk or other middleware, it's best to completely mock the Redux store for tests. You can apply the middleware to a mock store
+
+
 ## TypeScript
 
 - [reactnative.dev](https://reactnative.dev/docs/typescript)
@@ -204,6 +297,8 @@ Current setup suffice for bare react-native `snapshot` test, check [Jest: Snapsh
 
 Jest supports this via the `transform` configuration option.
 
+The difference between `it` and `test` is almost just semtical.
+
 ### Test React Native
 
 #### Test App
@@ -246,6 +341,11 @@ module.exports = {
 };
 ```
 
+clear mock `mockImplementation` which set a new return value for the mock
+- `mockFn.mockClear()`: will remove all stored information about calling the mock
+- `mockFn.mockRestore()`: same above plus removing the mocked return values
+
+
 #### Test Navigator
 
 #### Test Screen
@@ -254,6 +354,98 @@ module.exports = {
 
 - [Writing Tests](https://redux.js.org/usage/writing-tests)
 - [redux-mock-store](https://github.com/reduxjs/redux-mock-store)
+- [best ref: Intro to Confidently Testing Redux Applications with Jest & TypeScript](https://egghead.io/lessons/jest-adding-jest-with-typescript-support-to-a-vite-application)
+
+#### dependencies
+```shell
+# npm i jest blablabla
+```
+
+#### configuration
+
+When simply running 
+```shell
+npm run test -- --coverage --watchAll
+```
+Press `p -[suitName]` for specific suites to watch
+Jest coverage only infer what pieces of codes it should compare against for coverage report. To tell jest to look cover only `ts,tsx,js,jsx` files but not `.d.ts` files, we need to specifiy it in `jest.config.js`
+```js
+module.exports = {
+  collectCoverageFrom: ['src/**/*.{ts,tsx,js,jsx}', '!src/**/*.d.ts'],
+};
+```
+coverage report in browser,
+```shell
+open coverage/lcov-report/index.html
+```
+
+
+#### Basic Guidlines
+
+##### Test isolated redux slice
+0. use `it.todo` or `test.todo` to list tests to be written.
+```ts
+describe('loginSlice mock', () => {})
+```
+
+1. Test for Redux Reducer
+testing `reducer` is just testing pure function.
+```ts
+describe('loginSlice mock', () => {})
+```
+`action` action returns a plain object`{type: "someType", payload: somePayload}`
+`reducer(initialState, action)` -> `result` result is the new state, or we'd better just name it `newState`
+`expect(result).toEqual(newState)`
+100 % coverage is not the end game.
+One shoud consider testing senarios such as 
+- empty type (returning nothing but initialstate)
+- idempotent (dupication of actions should return the same state), etc.
+
+2. Test for Redux Selector
+<!-- TODO: add implementation detail -->
+- plain selector
+- memorized selector
+- memorized selector derived from multiple reducers
+
+memorized selector `preparedSelector(state: Rootstate)` is basically a state getter generated by `createSelector`. But I think unless there is necessity to prepare heavy computing selector, most of selectors can be done with `useSelector` hook.
+One shoud consider testing senarios such as 
+- empty type (returning nothing but initialstate)
+- idempotent (same state won't get recomputed), etc.
+
+3. Test for Redux Thunk
+`createAsyncThunk(type, payloadCreator)`
+- with mock dispatch
+- with mock store
+
+mocking api helper with `jest.mock` or `jest.SpyOn`, do remember to use `mockFn.mockRestore` in clearing mocks.
+
+- with real store: `getStoreWithState`
+```ts
+export const reducer = {
+  loginState: loginStateReducer,
+};
+/* nomal store */
+export const store = configureStore({
+  reducer,
+});
+/* dynamically configure store with preloadedState for testing purpose */
+// refer to configureStore.ts source code for more
+export const getStoreWithState = (preloadedState?: RootState) => {
+  return configureStore({reducer, preloadedState});
+};
+```
+
+- getStateWithItems
+`stateWithItem` => `await store.dispatch(thunk action)` => `newState` to be expected
+
+
+4. test components connected with redux store
+set util function
+- wrap `Provider` in `renderWithContext`
+- return ad-hoc state from `getStateWithItem()`
+spyon -> mockresolvedValueOnce
+
+##### Test component connected with redux
 
 ## CI/CD
 

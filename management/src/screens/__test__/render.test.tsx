@@ -2,11 +2,9 @@ import React from 'react';
 import {render, fireEvent, waitFor} from '@testing-library/react-native';
 import ChatRoomScreen from '../ChatRoomScreen';
 import FinancScreen from '../FinanceScreen';
-import LoginScreen from '../LoginScreen';
 import ProjectDetailScreen from '../ProjectDetailScreen';
 import ProjectScreen from '../ProjectScreen';
 import RecentScreen from '../RecentScreen';
-import RegisterScreen from '../RegisterScreen';
 import ScanScreen from '../ScanScreen';
 import SettingScreen from '../SettingScreen';
 import UnitDetailScreen from '../UnitDetailScreen';
@@ -26,12 +24,6 @@ describe('Screen rendering correctly', () => {
     expect(content.length).toBe(1);
   });
 
-  it('should render login screen', () => {
-    let props: any;
-    const {getAllByText} = render(<LoginScreen {...props} />);
-    const content = getAllByText('LoginScreen');
-    expect(content.length).toBe(1);
-  });
   it('should render project detail screen', () => {
     let props: any;
     const {getAllByText} = render(<ProjectDetailScreen {...props} />);
@@ -48,12 +40,6 @@ describe('Screen rendering correctly', () => {
     let props: any;
     const {getAllByText} = render(<RecentScreen {...props} />);
     const content = getAllByText('RecentScreen');
-    expect(content.length).toBe(1);
-  });
-  it('should render register screen', () => {
-    let props: any;
-    const {getAllByText} = render(<RegisterScreen {...props} />);
-    const content = getAllByText('RegisterScreen');
     expect(content.length).toBe(1);
   });
   it('should render scan screen', () => {

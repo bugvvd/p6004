@@ -6,9 +6,11 @@ import {NavigationContainer} from '@react-navigation/native';
 import AuthStackNavigator from './AuthStackNavigator';
 import MainStackNavigator from './MainStackNavigator';
 
-let isLoggedIn = false;
+// redux
+import {useAppSelector} from '../redux/typedReduxHooks';
 
 function Navigator() {
+  const isLoggedIn: boolean = useAppSelector(state => state.login.isLoggedIn);  
   return isLoggedIn ? <MainStackNavigator /> : <AuthStackNavigator />;
 }
 

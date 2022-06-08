@@ -7,14 +7,24 @@
  */
 
 import React from 'react';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
-import Root from './src/navigators';
 
+// providers
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {Provider as PaperProvider} from 'react-native-paper';
+import {Provider as StoreProvider} from 'react-redux';
+import {store} from './src/redux/store';
+
+// components
+import Root from './src/navigators';
 
 const App = () => {
   return (
     <SafeAreaProvider>
-      <Root />
+      <PaperProvider>
+        <StoreProvider store={store}>
+          <Root />
+        </StoreProvider>
+      </PaperProvider>
     </SafeAreaProvider>
   );
 };

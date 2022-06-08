@@ -5,6 +5,7 @@ module.exports = {
     './node_modules/react-native-gesture-handler/jestSetup.js',
     './jest/setup.js',
   ],
+  collectCoverageFrom: ['src/**/*.{ts,tsx,js,jsx}', '!src/**/*.d.ts'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   transformIgnorePatterns: [
     'node_modules/(?!(jest-)?@?react-native|@react-native-community|@react-navigation)',

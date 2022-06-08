@@ -1,6 +1,7 @@
 module.exports = {
   preset: 'react-native',
   verbose: true,
+  collectCoverageFrom: ['src/**/*.{ts,tsx,js,jsx}', '!src/**/*.d.ts'],
   setupFiles: ['./jest/setup.js'],
   setupFilesAfterEnv: ['@testing-library/jest-native/extend-expect'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
@@ -9,6 +10,6 @@ module.exports = {
   ],
   transform: {
     '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
-      './jest/__utils__/fileTransformer.js',
+      './jest/setup/fileTransformer.js',
   },
 };

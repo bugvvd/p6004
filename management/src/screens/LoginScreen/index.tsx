@@ -9,8 +9,17 @@ import {
 } from 'react-native';
 import LoginForm from './LoginForm/LoginForm';
 
+// redux
+import {useAppDispatch} from '../../redux/typedReduxHooks';
+import {login} from '../../redux/slices/loginSlice';
+
 // types
 import {LoginScreenProps} from '../types';
+
+export const demoFormValue = {
+  username: 'admin',
+  password: '12345',
+};
 
 const LoginScreen = ({navigation, route}: LoginScreenProps): JSX.Element => {
   const [username, setUsername] = React.useState<string | null>(null);
@@ -26,13 +35,12 @@ const LoginScreen = ({navigation, route}: LoginScreenProps): JSX.Element => {
     return false;
   };
 
+  const dispatch = useAppDispatch();
   const onPressLogin = (): void => {
-    console.log('login');
-    // wrap up username + passwod -> dispatch
+    dispatch(login(demoFormValue));
   };
 
   const onPressRegister = (): void => {
-    console.log('register');
     navigation.navigate('Register');
   };
 

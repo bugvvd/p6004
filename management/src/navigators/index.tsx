@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 // components
@@ -6,16 +5,20 @@ import {NavigationContainer} from '@react-navigation/native';
 import AuthStackNavigator from './AuthStackNavigator';
 import MainStackNavigator from './MainStackNavigator';
 
-let isLoggedIn = false;
+// redux
+import {useAppSelector} from '../redux/typedReduxHooks';
 
-function Navigator() {
+const Navigator = (): JSX.Element => {
+  const isLoggedIn: boolean = useAppSelector(state => state.loginState.isLoggedIn);  
   return isLoggedIn ? <MainStackNavigator /> : <AuthStackNavigator />;
-}
+};
 
-export default function Root() {
+const Root = (): JSX.Element => {
   return (
     <NavigationContainer>
       <Navigator />
     </NavigationContainer>
   );
-}
+};
+
+export default Root;

@@ -11,36 +11,119 @@ Always refer to doc, always
 npx react-native init user
 ```
 
-## npm/yarn script
-
-`package.json`
+## dependencies
 
 ```json
 {
+  "name": "management",
+  "version": "0.0.1",
+  "private": true,
   "scripts": {
     "android": "react-native run-android --port=8081",
+    "clean": "cd android && ./gradlew clean && cd ..",
     "device": "adb reverse tcp:8081 tcp:8081",
+    "dev:doc": "code ../doc/management.md",
+    "eraseDefaultDB": "adb root && adb shell rm /data/data/com.management/files/default.realm",
+    "getDefaultDB": "adb root && adb pull /data/data/com.management/files/default.realm && sudo chmod 777 default.realm",
     "ios": "react-native run-ios --port=8081",
-    "start": "react-native start --port=8081"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "start": "react-native start --port=8081 --reset-cache",
+    "start:ios": "react-native start --reset-cache",
+    "test": "jest --watch-all --detectOpenHandles"
+  },
+  "dependencies": {
+    "@react-navigation/drawer": "^6.4.1",
+    "@react-navigation/material-top-tabs": "^6.2.1",
+    "@react-navigation/native": "^6.0.10",
+    "@react-navigation/native-stack": "^6.6.2",
+    "@react-navigation/stack": "^6.2.1",
+    "patch-package": "^6.4.7",
+    "react": "17.0.2",
+    "react-native": "0.68.2",
+    "react-native-gesture-handler": "^2.4.1",
+    "react-native-pager-view": "^5.4.15",
+    "react-native-paper": "^4.12.1",
+    "react-native-reanimated": "^2.8.0",
+    "react-native-safe-area-context": "^4.2.5",
+    "react-native-screens": "^3.13.1",
+    "react-native-tab-view": "^3.1.1",
+    "react-native-vector-icons": "^9.1.0"
+  },
+  "devDependencies": {
+    "@babel/runtime": "^7.12.5",
+    "@react-native-community/eslint-config": "^2.0.0",
+    "@testing-library/jest-native": "^4.0.4",
+    "@testing-library/react-native": "^9.1.0",
+    "@types/jest": "^27.5.1",
+    "@types/react-native": "^0.67.7",
+    "@types/react-test-renderer": "^18.0.0",
+    "babel-jest": "^28.0.3",
+    "eslint": "^7.32.0",
+    "jest": "^27.0.0",
+    "metro-react-native-babel-preset": "^0.67.0",
+    "react-test-renderer": "17.0.2",
+    "ts-jest": "^28.0.2",
+    "typescript": "^4.6.4"
+  },
+  "resolutions": {
+    "@types/react": "^17"
   }
 }
 ```
 
-## dependencies
 
-| Package                      | Version   | Doc                                                                                      | Ref | Remarks                                                                                                                               |
-| ---------------------------- | --------- | ---------------------------------------------------------------------------------------- | --- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| `react-native-reanimated`    | `^2.8.0`  | [doc](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/installation) |     | [bable plugin](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/installation#babel-plugin) has to be listed last. Don't use Hermes (crash).|
-| `react-native-vision-camera` | `^2.13.2` | [doc](https://mrousavy.com/react-native-vision-camera/docs/guides)                       |     | `react-native-camera` deprecated.                                                                                                     |
-|                              |           |                                                                                          |     |                                                                                                                                       |
-|                              |           |                                                                                          |     |                                                                                                                                       |
+### Navigation
+`@react-navigation/native`
+- `^6.0.10` 
+- [doc](https://reactnavigation.org/docs/getting-started)
+- auto link for rn > 0.60 
+
+`react-native-screens`
+`react-native-safe-area-context`
+
+#### Stack Navigation
+
+#### Drawer Navigation
+
+`@react-navigation/drawer`
+`react-native-gesture-handler`
+`react-native-reanimated`
+- `^2.8.0`  
+- [doc](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/installation) 
+- [bable plugin](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/installation#babel-plugin) has to be listed last. Hermes (crash) was a problem. But it is ok now. 
+
+
+#### Tab Navigation
+##### Top Tab
+
+`@react-navigation/material-top-tabs`
+
+wraps `react-native-tab-view`
+
+`react-native-pager-view`
+
+##### Buttom Tab
+
+
+### UI
+`react-native-paper`
+`react-native-vector-icons`
+
+### Utilities
+`react-native-vision-camera` 
+- `^2.13.2` 
+- [doc](https://mrousavy.com/react-native-vision-camera/docs/guides) 
+- `react-native-camera` deprecated.
+
+
+
 
 ## devDependencies
 
-| Package                  | Version  | Doc                                                                                                                                                                                       | Ref | Remarks |
-| ------------------------ | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ------- |
-| `react-native-code-push` | `^7.0.4` | [Android](https://github.com/microsoft/react-native-code-push/blob/master/docs/setup-android.md) [IOS](https://github.com/microsoft/react-native-code-push/blob/master/docs/setup-ios.md) |     |         |
-|                          |          |                                                                                                                                                                                           |     |         |
+### CI/CD
+`react-native-code-push`
+- `^7.0.4`
+- [Android](https://github.com/microsoft/react-native-code-push/blob/master/docs/setup-android.md) [IOS](https://github.com/microsoft/react-native-code-push/blob/master/docs/setup-ios.md) 
 
 ```shell
 yarn

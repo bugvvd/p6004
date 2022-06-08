@@ -10,8 +10,10 @@ import React from 'react';
 import type {ReactNode} from 'react';
 
 // Providers
-import {Provider as PaperProvider} from 'react-native-paper';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {Provider as PaperProvider} from 'react-native-paper';
+import {Provider as StoreProvider} from 'react-redux';
+import {store} from './src/redux/store';
 
 // Components
 import Root from './src/navigators';
@@ -20,7 +22,9 @@ const App: () => ReactNode = () => {
   return (
     <SafeAreaProvider>
       <PaperProvider>
-        <Root />
+        <StoreProvider store={store}>
+          <Root />
+        </StoreProvider>
       </PaperProvider>
     </SafeAreaProvider>
   );
