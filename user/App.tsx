@@ -13,19 +13,22 @@ import type {ReactNode} from 'react';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {Provider as PaperProvider} from 'react-native-paper';
 import {Provider as StoreProvider} from 'react-redux';
+import {NavigationContainer} from '@react-navigation/native';
 import {store} from './src/redux/store';
 
 // Components
-import Root from './src/navigators';
+import RootNavigator from './src/navigators';
 
 const App: () => ReactNode = () => {
   return (
     <SafeAreaProvider>
-      <PaperProvider>
-        <StoreProvider store={store}>
-          <Root />
-        </StoreProvider>
-      </PaperProvider>
+      <StoreProvider store={store}>
+        <PaperProvider>
+          <NavigationContainer>
+            <RootNavigator />
+          </NavigationContainer>
+        </PaperProvider>
+      </StoreProvider>
     </SafeAreaProvider>
   );
 };

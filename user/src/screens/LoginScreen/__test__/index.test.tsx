@@ -61,7 +61,7 @@ describe('LoginScreen', () => {
     loginRequestSpy.mockRestore();
   });
   /* register */
-  it("should call navigation.navigate to RegisterScreen on pressing 'Register' Button", async () => {
+  test("navigation to RegisterScreen on pressing 'Register' Button", async () => {
     let props: any;
     const navigateMock = jest.fn();
     const {getByText} = renderWithContext(

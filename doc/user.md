@@ -288,20 +288,50 @@ module.exports = {
 };
 ```
 
-Current setup suffice for bare react-native `snapshot` test, check [Jest: Snapshot Test](https://jestjs.io/docs/tutorial-react-native#snapshot-test)
+Current setup suffice for bare rea  ct-native `snapshot` test, check [Jest: Snapshot Test](https://jestjs.io/docs/tutorial-react-native#snapshot-test)
 
 ### Code Transformation
 
 - [Jest: Code Transformation](https://jestjs.io/docs/code-transformation#typescript-with-type-checking)
   Jest runs the code in your project as JavaScript, but if you use some syntax not supported by Node out of the box (such as JSX, TypeScript, Vue templates) then you'll need to transform that code into plain JavaScript, similar to what you would do when building for browsers.
+- [Jest: transformIgnorePatterns](https://stackoverflow.com/questions/52569447/how-to-mock-react-navigations-navigation-prop-for-unit-tests-with-typescript-in)
+
+`jest.config.js`
+```js
+module.exports = {
+  preset: 'react-native',
+  verbose: true,
+  setupFiles: ['./jest/setup.js'],
+  collectCoverageFrom: ['src/**/*.{ts,tsx,js,jsx}', '!src/**/*.d.ts'],
+  setupFilesAfterEnv: ['@testing-library/jest-native/extend-expect'],
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+  transformIgnorePatterns: [
+    'node_modules/(?!(jest-)?@?react-native|@react-native(-community)?|@?react-navigation)',
+  ],
+  transform: {
+    '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
+      './jest/setup/fileTransformer.js',
+  },
+};
+
+```
 
 Jest supports this via the `transform` configuration option.
+
+
+
+### Caveats
 
 The difference between `it` and `test` is almost just semtical.
 
 ### Test React Native
-
+- [ref entrance: Testing React Native Apps](https://jestjs.io/docs/tutorial-react-native#modulenamemapper)
 #### Test App
+
+#### Test UI Component
+
+- [@testing-library/jest-native](https://www.npmjs.com/package/@testing-library/jest-native)
+- [tutorial: Using Jest and Testing Library with React Native Part V: Styles Testing](https://keyholesoftware.com/2020/11/30/using-jest-and-testing-library-with-react-native-part-v-styles-testing/)
 
 ### Test React Navigation
 
@@ -347,8 +377,12 @@ clear mock `mockImplementation` which set a new return value for the mock
 
 
 #### Test Navigator
+- [React Native School: Setup Jest Tests with React Navigation](https://www.reactnativeschool.com/setup-jest-tests-with-react-navigation) some inspiration on navigator and screen test
+- [opt out props type checking](https://stackoverflow.com/questions/52569447/how-to-mock-react-navigations-navigation-prop-for-unit-tests-with-typescript-in)
 
 #### Test Screen
+
+- [ReactNativeSchool/testing-screen-react-native-example](https://github.com/ReactNativeSchool/testing-screen-react-native-example/blob/main/src/screens/__tests__/SignIn.test.js) has some pretty standard screen test: customized hooks, fetch mocking and `flushMicrotasksQueue`
 
 ### Test Redux
 

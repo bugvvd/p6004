@@ -13,7 +13,6 @@ describe('Screen rendering correctly', () => {
     expect(content.length).toBe(1);
   });
 
- 
   it('should render scan screen', () => {
     let props: any;
     const {getAllByText} = render(<ScanScreen {...props} />);

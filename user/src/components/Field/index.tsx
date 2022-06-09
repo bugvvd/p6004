@@ -1,7 +1,7 @@
 import React from 'react';
 
 // components
-import {TextInput} from 'react-native-paper';
+import {TextInput as RNPTextInput} from 'react-native-paper';
 
 // types
 import type {FieldProps} from './types';
@@ -16,7 +16,7 @@ const Field = ({
   options,
 }: FieldProps) => {
   return (
-    <TextInput
+    <RNPTextInput
       placeholder={placeholder ?? name}
       key={name}
       onChangeText={onValueChange}
