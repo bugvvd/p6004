@@ -1,4 +1,4 @@
-import {LoginFormParms} from '../redux/slices/loginSlice';
+import {LoginFormParms} from '../redux/slices/loginStateSlice';
 import {sleep} from '../../utils/sleep';
 export const LOGIN_REQUEST_TIMEOUT = 2000;
 

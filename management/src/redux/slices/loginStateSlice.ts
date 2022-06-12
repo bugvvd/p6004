@@ -3,9 +3,11 @@ import {
   createAsyncThunk,
   createSelector,
   PayloadAction,
+  createAction,
 } from '@reduxjs/toolkit';
 
 import {loginRequest} from '../../api/loginRequest';
+import {logoutRequest} from '../../api/logoutRequest';
 
 export interface LoginStateParams {
   username: string | null;
@@ -90,11 +92,18 @@ export const loginStateSlice = createSlice({
 
 /* reducer */
 export default loginStateSlice.reducer;
-/* sync action */
-export const {logout} = loginStateSlice.actions;
+/* async logout */
+export const logout = createAction(
+  'loginStateSlice/logout',
+  (props: LoginStateParams) => {
+    // fire and forget
+    logoutRequest(props);
+    return {payload: null};
+  },
+);
 /* async action */
 export const login = createAsyncThunk(
-  'loginSlice/login',
+  'loginStateSlice/login',
   async (props: LoginFormParms, thunkAPI) => {
     let loginResponse = await loginRequest(props);
     if (loginResponse === 'timeout') {
@@ -110,6 +119,7 @@ export const login = createAsyncThunk(
     }
   },
 );
+
 /* prepared selector */
 export const getLoginState = createSelector(
   (state: LoginStateParams) => state.isLoggedIn,

@@ -481,6 +481,10 @@ spyon -> mockresolvedValueOnce
 
 ##### Test component connected with redux
 
+##### Test React Native Paper
+-[mock modules: How to write Unit test cases for the Modal component? [Part 3/3]](https://lalit-kushwah.medium.com/how-to-write-unit-test-cases-for-the-modal-component-part-3-3-e62a395a97a)
+
+
 ## CI/CD
 
 ## Pending

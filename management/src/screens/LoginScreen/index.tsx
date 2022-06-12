@@ -11,7 +11,7 @@ import LoginForm from './LoginForm/LoginForm';
 
 // redux
 import {useAppDispatch} from '../../redux/typedReduxHooks';
-import {login} from '../../redux/slices/loginSlice';
+import {login} from '../../redux/slices/loginStateSlice';
 
 // types
 import {LoginScreenProps} from '../types';

@@ -19,12 +19,6 @@ describe('Screen rendering correctly', () => {
     const content = getAllByText('ScanScreen');
     expect(content.length).toBe(1);
   });
-  it('should render setting screen', () => {
-    let props: any;
-    const {getAllByText} = render(<SettingScreen {...props} />);
-    const content = getAllByText('SettingScreen');
-    expect(content.length).toBe(1);
-  });
   it('should render unit detial screen', () => {
     let props: any;
     const {getAllByText} = render(

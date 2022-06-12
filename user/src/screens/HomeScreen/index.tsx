@@ -7,52 +7,10 @@ import Card from '../../components/Card';
 // types
 import {HomeScreenProps} from '../types';
 
-const demoUnitCard = [
-  {
-    title: 'UNIT-1',
-    subTitle: 'Subtitle for unit-1',
-    content: 'This is the description for unit-1',
-  },
-  {
-    title: 'UNIT-2',
-    subTitle: 'Subtitle for unit-2',
-    content: 'This is the description for unit-2',
-  },
-  {
-    title: 'UNIT-2',
-    subTitle: 'Subtitle for unit-2',
-    content: 'This is the description for unit-2',
-  },
-  {
-    title: 'UNIT-2',
-    subTitle: 'Subtitle for unit-2',
-    content: 'This is the description for unit-2',
-  },
-  {
-    title: 'UNIT-2',
-    subTitle: 'Subtitle for unit-2',
-    content: 'This is the description for unit-2',
-  },
-  {
-    title: 'UNIT-2',
-    subTitle: 'Subtitle for unit-2',
-    content: 'This is the description for unit-2',
-  },
-  {
-    title: 'UNIT-2',
-    subTitle: 'Subtitle for unit-2',
-    content: 'This is the description for unit-2',
-  },
-];
+const demoUnitCard = [];
 
 const HomeScreen = ({navigation, route}: HomeScreenProps): JSX.Element => {
-  return (
-    <ScrollView contentContainerStyle={styles.container}>
-      {demoUnitCard.map(item => (
-        <Card {...item} />
-      ))}
-    </ScrollView>
-  );
+  return <ScrollView contentContainerStyle={styles.container}></ScrollView>;
 };
 
 const styles = StyleSheet.create({

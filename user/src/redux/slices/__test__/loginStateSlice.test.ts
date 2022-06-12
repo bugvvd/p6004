@@ -1,4 +1,4 @@
-import loginStateSlice, {login, logout} from '../loginSlice';
+import loginStateReducer, {login, logout} from '../loginStateSlice';
 // types
 import {getStoreWithState, RootState} from '../../store';
 
@@ -27,7 +27,7 @@ describe('loginSlice mock', () => {
       isLoggedIn: true,
     };
     const testAction = {type: ''};
-    const testResult = loginStateSlice(testCurrentState, testAction);
+    const testResult = loginStateReducer(testCurrentState, testAction);
     expect(testResult).toEqual({
       username: 'foo',
       token: 'bar',
@@ -42,8 +42,13 @@ describe('loginSlice mock', () => {
       license: 'baz',
       isLoggedIn: true,
     };
-    const testAction = logout();
-    const testResult = loginStateSlice(testCurrentState, testAction);
+    const testAction = logout({
+      username: 'foo',
+      token: 'bar',
+      license: 'baz',
+      isLoggedIn: true,
+    })
+    const testResult = loginStateReducer(testCurrentState, testAction as any);
     expect(testResult).toEqual({
       username: null,
       token: null,
@@ -74,8 +79,8 @@ describe('loginSlice mock', () => {
     const {calls} = testDispatch.mock;
     // console.log('calls', calls);
     expect(calls).toHaveLength(2);
-    expect(calls[0][0].type).toEqual('loginSlice/login/pending');
-    expect(calls[1][0].type).toEqual('loginSlice/login/fulfilled');
+    expect(calls[0][0].type).toEqual('loginStateSlice/login/pending');
+    expect(calls[1][0].type).toEqual('loginStateSlice/login/fulfilled');
     expect(calls[1][0].payload).toEqual({
       username: 'foo',
       token: 'bar',
@@ -100,8 +105,8 @@ describe('loginSlice mock', () => {
     const {calls} = testDispatch.mock;
     // console.log('calls', calls);
     expect(calls).toHaveLength(2);
-    expect(calls[0][0].type).toEqual('loginSlice/login/pending');
-    expect(calls[1][0].type).toEqual('loginSlice/login/rejected');
+    expect(calls[0][0].type).toEqual('loginStateSlice/login/pending');
+    expect(calls[1][0].type).toEqual('loginStateSlice/login/rejected');
     expect(calls[1][0].payload).toBe('Internal Error: login request timeout');
     // to remove jest.spyOn function completely in preventing from messing with following test
     loginRequestSpy.mockRestore();
@@ -129,8 +134,8 @@ describe('loginSlice mock', () => {
     // console.log('actionMock', actionMock);
     actionMock = storeMock.getActions();
     expect(actionMock.length).toBe(2);
-    expect(actionMock[0].type).toEqual('loginSlice/login/pending');
-    expect(actionMock[1].type).toEqual('loginSlice/login/fulfilled');
+    expect(actionMock[0].type).toEqual('loginStateSlice/login/pending');
+    expect(actionMock[1].type).toEqual('loginStateSlice/login/fulfilled');
     expect(actionMock[1].payload).toEqual({
       username: 'foo',
       token: 'bar',
@@ -155,8 +160,8 @@ describe('loginSlice mock', () => {
     // console.log('actionMock', actionMock);
     actionMock = storeMock.getActions();
     expect(actionMock.length).toBe(2);
-    expect(actionMock[0].type).toEqual('loginSlice/login/pending');
-    expect(actionMock[1].type).toEqual('loginSlice/login/rejected');
+    expect(actionMock[0].type).toEqual('loginStateSlice/login/pending');
+    expect(actionMock[1].type).toEqual('loginStateSlice/login/rejected');
     expect(actionMock[1].payload).toEqual(
       'Internal Error: login request timeout',
     );

@@ -6,7 +6,6 @@ import ProjectDetailScreen from '../ProjectDetailScreen';
 import ProjectScreen from '../ProjectScreen';
 import RecentScreen from '../RecentScreen';
 import ScanScreen from '../ScanScreen';
-import SettingScreen from '../SettingScreen';
 import UnitDetailScreen from '../UnitDetailScreen';
 
 describe('Screen rendering correctly', () => {
@@ -48,12 +47,7 @@ describe('Screen rendering correctly', () => {
     const content = getAllByText('ScanScreen');
     expect(content.length).toBe(1);
   });
-  it('should render setting screen', () => {
-    let props: any;
-    const {getAllByText} = render(<SettingScreen {...props} />);
-    const content = getAllByText('SettingScreen');
-    expect(content.length).toBe(1);
-  });
+  
   it('should render unit detial screen', () => {
     let props: any;
     const {getAllByText} = render(

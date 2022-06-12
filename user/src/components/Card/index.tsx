@@ -19,7 +19,7 @@ const Card = ({
 }: CardProps): JSX.Element => {
   return (
     <RNPCard style={styles.container} >
-      <RNPCard.Title title={title} subtitle={subTitle} />
+      <RNPCard.Title title={title} subtitle={subTitle}/>
       <RNPCard.Content>
         <RNPParagraph>{content}</RNPParagraph>
       </RNPCard.Content>
@@ -37,8 +37,7 @@ const Card = ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 20,
-    marginHorizontal: 20
+    // justifyContent: 'space-between'
   },
 });
 

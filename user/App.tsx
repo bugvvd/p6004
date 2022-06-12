@@ -17,6 +17,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {store} from './src/redux/store';
 
 // Components
+import {Portal} from 'react-native-paper';
 import RootNavigator from './src/navigators';
 
 const App: () => ReactNode = () => {
@@ -24,9 +25,9 @@ const App: () => ReactNode = () => {
     <SafeAreaProvider>
       <StoreProvider store={store}>
         <PaperProvider>
-          <NavigationContainer>
-            <RootNavigator />
-          </NavigationContainer>
+            <NavigationContainer>
+              <RootNavigator />
+            </NavigationContainer>
         </PaperProvider>
       </StoreProvider>
     </SafeAreaProvider>
