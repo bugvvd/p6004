@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet} from 'react-native';
+import {StyleSheet, useWindowDimensions} from 'react-native';
 import {
   Card as RNPCard,
   Paragraph as RNPParagraph,
@@ -17,9 +17,10 @@ const Card = ({
   actions,
   style,
 }: CardProps): JSX.Element => {
+  const {height, width} = useWindowDimensions();
   return (
-    <RNPCard style={styles.container} >
-      <RNPCard.Title title={title} subtitle={subTitle}/>
+    <RNPCard style={styles(height, width).container}>
+      <RNPCard.Title title={title} subtitle={subTitle} />
       <RNPCard.Content>
         <RNPParagraph>{content}</RNPParagraph>
       </RNPCard.Content>
@@ -34,11 +35,13 @@ const Card = ({
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    // justifyContent: 'space-between'
-  },
-});
+const styles = (height: number, width: number) =>
+  StyleSheet.create({
+    container: {
+      justifyContent: 'space-between',
+      marginTop: height / 40,
+      marginHorizontal: width / 20,
+    },
+  });
 
 export default Card;
