@@ -20,7 +20,7 @@ const Form = ({field, action}: FormProps): JSX.Element => {
       ))}
       {/* actions */}
       {action?.map(item => (
-        <RNPButton key={item.name} onPress={item.callback}>
+        <RNPButton key={item.name} onPress={item.callback} testID={item.testID}>
           {item.name}
         </RNPButton>
       ))}

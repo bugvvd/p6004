@@ -48,7 +48,8 @@ const LoginScreen = ({navigation, route}: LoginScreenProps): JSX.Element => {
     <TouchableWithoutFeedback
       onPress={() => {
         Keyboard.dismiss();
-      }}>
+      }}
+      testID="myFirstTest">
       <ScrollView contentContainerStyle={styles.container}>
         <LoginForm
           field={[

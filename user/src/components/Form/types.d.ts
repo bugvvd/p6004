@@ -4,6 +4,7 @@ export declare type ActionOptionProps = {
   name: string;
   callback?: () => void;
   options?: any;
+  testID?: string
 };
 
 export declare interface FormProps {

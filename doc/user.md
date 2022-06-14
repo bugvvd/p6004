@@ -484,6 +484,111 @@ spyon -> mockresolvedValueOnce
 ##### Test React Native Paper
 -[mock modules: How to write Unit test cases for the Modal component? [Part 3/3]](https://lalit-kushwah.medium.com/how-to-write-unit-test-cases-for-the-modal-component-part-3-3-e62a395a97a)
 
+## Testing: Detox
+
+e2e test
+
+### setup on MacOS
+
+-[Detox: Getting Started](https://wix.github.io/Detox/docs/introduction/getting-started)
+
+```shell
+brew install node
+npm install -g detox-cli
+# in project
+npm install detox --save-dev
+# init project
+detox init
+```
+everything according to doc, except Detox for android
+1. [Setting Detox up as a compiling dependency​](https://wix.github.io/Detox/docs/introduction/android#setting-detox-up-as-a-compiling-dependency)
+plus: 
+- [add kotlin](https://wix.github.io/Detox/docs/introduction/android#setting-detox-up-as-a-compiling-dependency)
+- [create a Detox test class](https://wix.github.io/Detox/docs/introduction/android#setting-detox-up-as-a-compiling-dependency)
+- [Enable clear-text (unencrypted) traffic for Detox​](https://wix.github.io/Detox/docs/introduction/android#6-enable-clear-text-unencrypted-traffic-for-detox)
+
+config `.detoxrc.json`
+```json
+{
+  "testRunner": "jest",
+  "runnerConfig": "e2e/config.json",
+  "skipLegacyWorkersInjection": true,
+  "apps": {
+    "ios.debug": {
+      "name": "management",
+      "type": "ios.app",
+      "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/management.app",
+      "build": "xcodebuild -workspace ios/management.xcworkspace -scheme management -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build"
+    },
+    "ios.release": {
+      "name": "management",
+      "type": "ios.app",
+      "binaryPath": "ios/build/Build/Products/Release-iphonesimulator/management.app",
+      "build": "xcodebuild -workspace ios/management.xcworkspace -scheme management -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build"
+    },
+    "android.debug": {
+      "type": "android.apk",
+      "binaryPath": "android/app/build/outputs/apk/debug/app-debug.apk",
+      "build": "cd android && ./gradlew assembleDebug assembleAndroidTest -DtestBuildType=debug && cd .."
+    },
+    "android.release": {
+      "type": "android.apk",
+      "binaryPath": "android/app/build/outputs/apk/release/app-release.apk",
+      "build": "cd android && ./gradlew assembleRelease assembleAndroidTest -DtestBuildType=release && cd .."
+    }
+  },
+  "devices": {
+    "simulator": {
+      "type": "ios.simulator",
+      "device": {
+        "type": "iPhone 12"
+      }
+    },
+    "emulator": {
+      "type": "android.emulator",
+      "device": {
+        "avdName": "Pixel_C_API_29"
+      }
+    }
+  },
+  "configurations": {
+    "ios.sim.debug": {
+      "device": "simulator",
+      "app": "ios.debug"
+    },
+    "ios.sim.release": {
+      "device": "simulator",
+      "app": "ios.release"
+    },
+    "android.emu.debug": {
+      "device": "emulator",
+      "app": "android.debug"
+    },
+    "android.emu.release": {
+      "device": "emulator",
+      "app": "android.release"
+    }
+  }
+}
+```
+and `package.json` script
+```json
+{
+  "script": {
+    "e2e:build-ios:debug": "detox build --configuration ios.sim.debug",
+    "e2e:build-ios:release": "detox build --configuration ios.sim.release",
+    "e2e:build-android:debug": "detox build --configuration android.emu.debug",
+    "e2e:build-android:release": "detox build --configuration android.emu.release",
+    "e2e:run-ios:debug": "detox test --configuration ios.sim.debug",
+    "e2e:run-ios:release": "detox test --configuration ios.sim.release",
+    "e2e:run-android:debug": "detox test --configuration android.emu.debug",
+    "e2e:run-android:release": "detox test --configuration android.emu.release"
+  }
+}
+```
+
+Start metro before testing.
+All set.
 
 ## CI/CD
 
