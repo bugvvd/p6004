@@ -3,8 +3,8 @@ import React from 'react';
 // components
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import {Button, Card, List, Modal, Portal} from 'react-native-paper';
-import { logout } from '../../redux/slices/loginStateSlice';
-import { useAppDispatch } from '../../redux/typedReduxHooks';
+import {logout} from '../../redux/slices/loginStateSlice';
+import {useAppDispatch} from '../../redux/typedReduxHooks';
 
 // types
 import {SettingScreenProps} from '../types';
@@ -19,9 +19,9 @@ const SettingScreen = ({
   const hideLogoutModal = () => setLogoutModalVisible(false);
 
   const dispatch = useAppDispatch();
-  const onPressLogout = (): void=> {
+  const onPressLogout = (): void => {
     dispatch(logout());
-  }
+  };
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -52,11 +52,15 @@ const SettingScreen = ({
             visible={logoutModalVisible}
             onDismiss={hideLogoutModal}
             contentContainerStyle={styles.logoutModal}>
-            <Card>
+            <Card testID="logout-dial">
               <Card.Title title="Are you sure?" />
               <Card.Actions style={{justifyContent: 'flex-end'}}>
-                <Button onPress={onPressLogout}>Yes</Button>
-                <Button onPress={hideLogoutModal}>Cancel</Button>
+                <Button onPress={onPressLogout} testID="confirm-logout">
+                  Yes
+                </Button>
+                <Button onPress={hideLogoutModal} testID="cancel-logout">
+                  Cancel
+                </Button>
               </Card.Actions>
             </Card>
           </Modal>

@@ -6,8 +6,11 @@ import {
   StyleSheet,
   ScrollView,
   TouchableWithoutFeedback,
+  View,
+  useWindowDimensions,
 } from 'react-native';
-import LoginForm from './LoginForm/LoginForm';
+import {Button, TextInput} from 'react-native-paper';
+
 
 // redux
 import {useAppDispatch} from '../../redux/typedReduxHooks';
@@ -44,43 +47,47 @@ const LoginScreen = ({navigation, route}: LoginScreenProps): JSX.Element => {
     navigation.navigate('Register');
   };
 
+  const {width, height} = useWindowDimensions();
+
   return (
     <TouchableWithoutFeedback
       onPress={() => {
         Keyboard.dismiss();
       }}
       testID="myFirstTest">
-      <ScrollView contentContainerStyle={styles.container}>
-        <LoginForm
-          field={[
-            {
-              type: 'plain',
-              name: 'Username',
-              onValueChange: setUsername,
-              validate: isValidUsername,
-            },
-            {
-              type: 'plain',
-              name: 'Password',
-              onValueChange: setPassword,
-              validate: isValidPassword,
-            },
-          ]}
-          action={[
-            {name: 'Login', callback: onPressLogin},
-            {name: 'Register', callback: onPressRegister},
-          ]}
+      <ScrollView contentContainerStyle={styles(width, height).container}>
+        <TextInput
+          placeholder="Username"
+          onChangeText={setUsername}
+          onBlur={isValidUsername}
+          testID="login-username"
         />
+        <TextInput
+          placeholder="Password"
+          onChangeText={setPassword}
+          onBlur={isValidPassword}
+          testID="login-password"
+        />
+        <View style={styles(width, height).actionContainer}>
+          <Button onPress={onPressLogin} testID="login-button">
+            Login
+          </Button>
+          <Button onPress={onPressRegister} testID="register-button">
+            Register
+          </Button>
+        </View>
       </ScrollView>
     </TouchableWithoutFeedback>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flexGrow: 1,
-    justifyContent: 'center',
-  },
-});
+const styles = (width: number, height: number) =>
+  StyleSheet.create({
+    container: {
+      flexGrow: 1,
+      justifyContent: 'center',
+    },
+    actionContainer: {flexDirection: 'row', justifyContent: 'center'},
+  });
 
 export default LoginScreen;

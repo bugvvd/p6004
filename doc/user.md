@@ -490,7 +490,10 @@ e2e test
 
 ### setup on MacOS
 
--[Detox: Getting Started](https://wix.github.io/Detox/docs/introduction/getting-started)
+- [Detox: Getting Started](https://wix.github.io/Detox/docs/introduction/getting-started)
+- [Some best practices](https://www.notion.so/React-Native-E2E-Testing-with-Detox-210239315470489095d0b4e51cfc5768)
+- [react-native 的e2e测试——detox简介](https://www.jianshu.com/p/6fb0e0fa2f8b)
+  > detox的每一个步测试方法都是 async 的, 当 ButtonA 被点击之后，App 的各种线程， animation， 网络请求， 异步方法等等统统运行完毕，App 完全空闲的时候 tap 方法才会resolve。因此当测试运行到第二步的时候， ButtonB一定是处于可点击状态的， 不需要再用sleep或者wait方法来保证ButtonB的状态。 这就是所谓的自动同步（Automatically synchronized）。（同步指测试脚本和 App 的执行是按预期顺序执行的）。
 
 ```shell
 brew install node

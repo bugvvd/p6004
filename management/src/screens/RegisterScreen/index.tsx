@@ -3,11 +3,13 @@ import React from 'react';
 // components
 import {
   Keyboard,
-  ScrollView,
   StyleSheet,
+  ScrollView,
   TouchableWithoutFeedback,
+  View,
+  useWindowDimensions,
 } from 'react-native';
-import RegisterForm from './RegisterForm/RegisterForm';
+import {Button, TextInput} from 'react-native-paper';
 
 // types
 import {RegisterScreenProps} from '../types';
@@ -18,6 +20,7 @@ const RegisterScreen = ({
 }: RegisterScreenProps): JSX.Element => {
   const [username, setUsername] = React.useState<string | null>(null);
   const [password, setPassword] = React.useState<string | null>(null);
+  const [comfirmPassword, setComfirmPassword] = React.useState<string | null>(null);
 
   const isValidUsername = (): boolean => {
     console.log('vaidate username');
@@ -26,6 +29,11 @@ const RegisterScreen = ({
 
   const isValidPassword = (): boolean => {
     console.log('vaidate password');
+    return false;
+  };
+
+  const isPasswordConfirmed = (): boolean => {
+    console.log('comfirm password');
     return false;
   };
 
@@ -38,49 +46,51 @@ const RegisterScreen = ({
     console.log('contact');
     // navigate to register
   };
-
+  const {width, height} = useWindowDimensions();
   return (
     <TouchableWithoutFeedback
       onPress={() => {
         Keyboard.dismiss();
       }}>
-      <ScrollView contentContainerStyle={styles.container}>
-        <RegisterForm
-          field={[
-            {
-              type: 'plain',
-              name: 'Username',
-              onValueChange: setUsername,
-              validate: isValidUsername,
-            },
-            {
-              type: 'plain',
-              name: 'Password',
-              onValueChange: setPassword,
-              validate: isValidPassword,
-            },
-            {
-              type: 'plain',
-              name: 'PasswordConfirmation',
-              onValueChange: setPassword,
-              validate: isValidPassword,
-            },
-          ]}
-          action={[
-            {name: 'Register', callback: onPressRegister},
-            {name: 'Contact', callback: onPressContact},
-          ]}
+      <ScrollView contentContainerStyle={styles(width, height).container}>
+        <TextInput
+          placeholder="Username"
+          onChangeText={setUsername}
+          onBlur={isValidUsername}
+          testID="register-username"
         />
+        <TextInput
+          placeholder="Password"
+          onChangeText={setPassword}
+          onBlur={isValidPassword}
+          testID="register-password"
+        />
+        <TextInput
+          placeholder="Confirm Password"
+          onChangeText={setComfirmPassword}
+          onBlur={isPasswordConfirmed}
+          testID="register-confirm-password"
+        />
+        <View style={styles(width, height).actionContainer}>
+          <Button onPress={onPressRegister} testID="register-button">
+            Register
+          </Button>
+          <Button onPress={onPressContact} testID="contact-button">
+            Contact
+          </Button>
+        </View>
       </ScrollView>
     </TouchableWithoutFeedback>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flexGrow: 1,
-    justifyContent: 'center',
-  },
-});
+const styles = (width: number, height: number) =>
+  StyleSheet.create({
+    container: {
+      flexGrow: 1,
+      justifyContent: 'center',
+    },
+    actionContainer: {flexDirection: 'row', justifyContent: 'center'},
+  });
 
 export default RegisterScreen;
