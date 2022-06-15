@@ -1,0 +1,13 @@
+diff --git a/node_modules/@react-navigation/drawer/src/views/DrawerToggleButton.tsx b/node_modules/@react-navigation/drawer/src/views/DrawerToggleButton.tsx
+index b6ad164..479047c 100644
+--- a/node_modules/@react-navigation/drawer/src/views/DrawerToggleButton.tsx
++++ b/node_modules/@react-navigation/drawer/src/views/DrawerToggleButton.tsx
+@@ -31,6 +31,8 @@ export default function DrawerToggleButton({ tintColor, ...rest }: Props) {
+         ios: undefined,
+         default: { top: 16, right: 16, bottom: 16, left: 16 },
+       })}
++      accessibilityLabel="drawer-icon"
++      testID="drawer-icon"
+     >
+       <Image
+         style={[styles.icon, tintColor ? { tintColor } : null]}

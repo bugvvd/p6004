@@ -1,3 +1,6 @@
+const waitToNavigate = duration => new Promise(resolve => setTimeout(() => resolve(), duration));
+
+
 describe('Example', () => {
   beforeAll(async () => {
     await device.launchApp({
@@ -22,11 +25,19 @@ describe('Example', () => {
     await element(by.text('REGISTER')).tap();
     await expect(element(by.text('REGISTER'))).toBeVisible();
     await expect(element(by.text('CONTACT'))).toBeVisible();
+    await element(by.id('header-back')).tap();
+    await expect(element(by.text('LOGIN'))).toBeVisible();
+    await expect(element(by.text('REGISTER'))).toBeVisible();
   });
 
   it("should render 'RecentScreen' on pressing 'LOGIN' button", async () => {
     await element(by.text('LOGIN')).tap();
     await expect(element(by.text('RecentScreen'))).toBeVisible();
+    await expect(element(by.id('drawer-icon'))).toBeVisible();
+    await element(by.id('drawer-icon')).tap();
+    await expect(element(by.text('Setting'))).toBeVisible();
+    await expect(element(by.text('Setting'))).toBeVisible();
+    await expect(element(by.text('Setting'))).toBeVisible();
   });
 
   it("should render MainStack/MainDrawer/HomeTab/RecentScreen on pressing 'LOGIN' button", async () => {});
