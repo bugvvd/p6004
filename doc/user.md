@@ -484,6 +484,12 @@ spyon -> mockresolvedValueOnce
 ##### Test React Native Paper
 -[mock modules: How to write Unit test cases for the Modal component? [Part 3/3]](https://lalit-kushwah.medium.com/how-to-write-unit-test-cases-for-the-modal-component-part-3-3-e62a395a97a)
 
+##### Test Realm and MongoDB
+
+- [Realm Mock for jest](https://gist.github.com/hyb175/beb9ceed4c34300ba7c77d3d6d44ae52)
+
+##### Test socket.io
+
 ## Testing: Detox
 
 e2e test

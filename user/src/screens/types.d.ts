@@ -1,4 +1,4 @@
-import type {CompositeNavigationProp} from '@react-navigation/native';
+import type {CompositeScreenProp} from '@react-navigation/native';
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import type {DrawerScreenProps} from '@react-navigation/drawer';
 
@@ -46,9 +46,9 @@ export declare type UnitDetailScreenProps = NativeStackScreenProps<
  * Main Drawer Screens
  */
 
-export declare type HomeScreenProps = DrawerScreenProps<
-  MainDrawerParamList,
-  'Home'
+export declare type HomeScreenProps = CompositeScreenProp<
+  DrawerScreenProps<MainDrawerParamList, 'Home'>,
+  NativeStackScreenProps<MainStackParamList, 'UnitDetail'>
 >;
 
 export declare type SettingScreenProps = DrawerScreenProps<

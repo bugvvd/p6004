@@ -4,10 +4,10 @@ import React from 'react';
 // components
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import RecentScreen from '../../../screens/RecentScreen';
-import ProjectScreen from '../../../screens/ProjectScreen';
 
 // types
 import {HomeTabParamList} from './types';
+import ProjectStackNavigator from './ProjectStackNavigator';
 
 const Tab = createMaterialTopTabNavigator<HomeTabParamList>();
 
@@ -20,9 +20,9 @@ export default function HomeTabNavigator() {
         options={{tabBarTestID: 'recent'}}
       />
       <Tab.Screen
-        name="Project"
-        component={ProjectScreen}
-        options={{tabBarTestID: 'project'}}
+        name="ProjectStack"
+        component={ProjectStackNavigator}
+        options={{tabBarTestID: 'project_stack'}}
       />
     </Tab.Navigator>
   );

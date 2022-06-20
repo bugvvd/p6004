@@ -61,4 +61,11 @@ describe('Example', () => {
     await expect(element(by.text('LOGIN'))).toBeVisible();
     await expect(element(by.text('REGISTER'))).toBeVisible();
   });
+
+  it("should navigate to UnitDetailScreen on pressing unit card", async () => {
+    // await sleep(1000);
+    await element(by.text('LOGIN')).tap();
+    await element(by.id('l_1')).tap();
+    await expect(element(by.text('MHY-1-102'))).toBeVisible();
+  });
 });

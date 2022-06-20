@@ -9,6 +9,7 @@ import UnitDetailScreen from '../../screens/UnitDetailScreen';
 
 // types
 import {MainStackParamList} from './types';
+import ProjectDetailScreen from '../../screens/ProjectDetailScreen';
 
 const Stack = createStackNavigator<MainStackParamList>();
 

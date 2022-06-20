@@ -12,7 +12,7 @@ const UnitDetailScreen = ({
 }: UnitDetailScreenProps): JSX.Element => {
   return (
     <View>
-      <Text>UnitDetailScreen</Text>
+      <Text>{route.params.unitID}</Text>
     </View>
   );
 };

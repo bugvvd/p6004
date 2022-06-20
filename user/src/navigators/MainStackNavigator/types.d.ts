@@ -1,6 +1,6 @@
 export declare type MainStackParamList = {
   MainDrawer: undefined;
-  ChatRoom: {unitId: String};
-  UnitDetail: {UnitId: String};
+  ChatRoom: {unitID: String};
+  UnitDetail: {unitID: String};
   Scan: undefined;
 };

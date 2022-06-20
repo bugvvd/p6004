@@ -2,14 +2,14 @@ import React from 'react';
 import {act, render, fireEvent, waitFor} from '@testing-library/react-native';
 
 // screen
-import HomeScreen from '..';
+import ProjectScreen from '..';
 
 // utils
 import {renderWithContext} from '../../../../jest/utils/renderWithContext';
 import {getStoreWithState} from '../../../redux/store';
 import {Provider} from 'react-redux';
 
-describe('HomeScreen', () => {
+describe('ProjectScreen', () => {
   beforeEach(() => {
     // jest.useFakeTimers();
   });
@@ -19,35 +19,30 @@ describe('HomeScreen', () => {
   /* render */
   it('should render ', () => {
     let props: any;
-    renderWithContext(<HomeScreen {...props} />);
+    renderWithContext(<ProjectScreen {...props} />);
   });
   it('should render card contents', () => {
     let props: any;
     const {getByTestId, getByText} = renderWithContext(
-      <HomeScreen {...props} />,
+      <ProjectScreen {...props} />,
     );
-    expect(getByTestId('h_1')).toBeTruthy();
-    expect(getByText('紧急通知！！')).toBeTruthy();
 
-    expect(getByTestId('m_1')).toBeTruthy();
     expect(getByTestId('l_1')).toBeTruthy();
     expect(getByTestId('l_2')).toBeTruthy();
     expect(getByTestId('l_3')).toBeTruthy();
-    expect(getByTestId('l_4')).toBeTruthy();
   });
   it('should fire navigation.navigate on pressing card', async () => {
     // proceed with getStoreWithState
     let navigateMock = jest.fn();
     let props: any;
     const {getByTestId} = renderWithContext(
-      <HomeScreen {...props} navigation={{navigate: navigateMock}} />,
+      <ProjectScreen {...props} navigation={{navigate: navigateMock}} />,
     );
     const l1Card = getByTestId('l_1');
     const l1CardNavigationParam = {};
     await waitFor(() => fireEvent.press(l1Card));
     expect(navigateMock).toHaveBeenCalledTimes(1);
-    expect(navigateMock.mock.calls[0][0]).toBe('UnitDetail');
-    expect(navigateMock.mock.calls[0][1]).toStrictEqual({"unitID": "MHY-1-102"});
-    
+    expect(navigateMock.mock.calls[0][0]).toBe('ProjectDetail');
+    expect(navigateMock.mock.calls[0][1]).toStrictEqual({projectID: 'MHY'});
   });
 });

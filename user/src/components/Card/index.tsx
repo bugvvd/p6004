@@ -6,18 +6,10 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import {IconButton} from 'react-native-paper';
+import {IconButton, Menu} from 'react-native-paper';
 
 import {Colors} from '../../constants/Colors';
-
-type UnitCardProps = {
-  priority: 'emergency' | 'notification' | 'regular';
-  title: string;
-  description?: string;
-  operable?: boolean;
-  enableMessage?: boolean;
-  enableCall?: boolean;
-};
+import {CardProps} from './types.d';
 
 const Card = ({
   priority,
@@ -26,14 +18,19 @@ const Card = ({
   operable = false,
   enableMessage = false,
   enableCall = false,
-}: UnitCardProps) => {
+  goto,
+  testID,
+}: CardProps) => {
   const {height, width} = useWindowDimensions();
-
+  const [settingMenuVisible, setSettingMenuVisible] =
+    React.useState<boolean>(false);
+  const showSettingMenu = (): void => setSettingMenuVisible(true);
+  const hideSettingMenu = (): void => setSettingMenuVisible(false);
   const ribbonColor = (priority: string): string | undefined => {
     return Colors.ribbon[priority as keyof typeof Colors.ribbon];
   };
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={goto} testID={testID}>
       <View style={styles(height, width).container}>
         <View
           style={[
@@ -55,6 +52,7 @@ const Card = ({
                 icon="phone"
                 onPress={() => console.log('Pressed Phone')}
                 size={Math.floor(height / 40)}
+                testID="card-phone"
               />
             )}
             {enableMessage && (
@@ -62,13 +60,23 @@ const Card = ({
                 icon="message"
                 onPress={() => console.log('Pressed Message')}
                 size={Math.floor(height / 40)}
+                testID="card-message"
               />
             )}
-            <IconButton
-              icon="dots-horizontal"
-              onPress={() => console.log('Pressed Setting')}
-              size={Math.floor(height / 40)}
-            />
+            <Menu
+              visible={settingMenuVisible}
+              onDismiss={hideSettingMenu}
+              anchor={
+                <IconButton
+                  icon="dots-horizontal"
+                  onPress={showSettingMenu}
+                  size={Math.floor(height / 40)}
+                  testID="card-dots"
+                />
+              }>
+              <Menu.Item title="删除" testID="card-delete" />
+              <Menu.Item title="重命名" testID="card-rename" />
+            </Menu>
           </View>
         )}
       </View>

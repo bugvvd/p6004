@@ -8,6 +8,7 @@ import type {
   HomeTabParamList,
   MainDrawerParamList,
   MainStackParamList,
+  ProjectStackParamList,
 } from '../navigators/types';
 
 /**
@@ -39,11 +40,6 @@ export declare type ChatRoomScreenProps = NativeStackScreenProps<
   'ChatRoom'
 >;
 
-export declare type ProjectDetailScreenProps = NativeStackScreenProps<
-  MainStackParamList,
-  'ProjectDetail'
->;
-
 export declare type UnitDetailScreenProps = NativeStackScreenProps<
   MainStackParamList,
   'UnitDetail'
@@ -72,12 +68,21 @@ export declare type SettingScreenProps = DrawerScreenProps<
  * Home Tab Screens
  */
 
-export declare type ProjectScreenProps = MaterialBottomTabScreenProps<
-  HomeTabParamList,
-  'Project'
->;
-
 export declare type RecentScreenProps = MaterialBottomTabScreenProps<
   HomeTabParamList,
   'Recent'
+>;
+
+/**
+ * Project Stack Screens
+ */
+
+export declare type ProjectScreenProps = NativeStackScreenProps<
+  ProjectStackParamList,
+  'Project'
+>;
+
+export declare type ProjectDetailScreenProps = NativeStackScreenProps<
+  ProjectStackParamList,
+  'ProjectDetail'
 >;
