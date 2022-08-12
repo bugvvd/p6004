@@ -4,42 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "db": "mongod --dbpath ./data --logpath ./log/mongo.log  --bind_ip=0.0.0.0 --fork",
-    "dev:doc": "code ../doc/server.md",
-    "dev:serveExp": " kill $(lsof -i :3000 -t) && nodemon App.js || nodemon --delay 1500ms App.js",
-    "dev:serve": "nodemon --delay 1500ms server.js",
-    "ngork": "./bin/sunny clientid c5a9128b80f4e957",
-    "test": "jest  --watchAll --silent"    
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "@babel/core": "^7.17.9",
-    "@babel/preset-env": "^7.16.11",
-    "@babel/preset-typescript": "^7.16.7",
-    "@shelf/jest-mongodb": "^2.2.1",
-    "babel-jest": "^28.0.2",
-    "jest": "^28.0.2"
-  },
   "dependencies": {
-    "@koa/cors": "^3.3.0",
-    "axios": "^0.27.2",
-    "dotenv": "^16.0.0",
-    "jsonwebtoken": "^8.5.1",
-    "koa": "^2.13.4",
-    "koa-bodyparser": "^4.3.0",
-    "koa-combine-routers": "^4.0.2",
-    "koa-cors": "^0.0.16",
-    "koa-jwt": "^4.0.3",
-    "koa-logger": "^3.2.1",
-    "koa-router": "^10.1.1",
-    "koa2-cors": "^2.0.6",
-    "mongodb-memory-server": "^8.5.1",
-    "mongodb-memory-server-core": "^8.5.1",
-    "mongoose": "^6.3.1",
-    "socket.io": "^4.5.0",
-    "socket.io-client": "^4.5.0",
-    "supertest": "^6.2.3"
+    "dotenv": "^16.0.1",
+    "koa": "^2.13.4"
+  },
+  "devDependencies": {
+    "@types/koa": "^2.13.5",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.7.4"
   }
 }
