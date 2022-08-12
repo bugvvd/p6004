@@ -14,4 +14,4 @@ const httpsServer = https.createServer(app.callback()).listen(httpsPort, () => {
   console.log(`**** HTTP server starts at ${httpsPort}`);
 });
 
-export { httpServer, httpsServer };
+export default { httpServer, httpsServer };
