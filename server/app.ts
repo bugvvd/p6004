@@ -1,18 +1,15 @@
 import Koa from "koa";
-import Router from "@koa/router";
-import logger from "koa-logger";
-
 const app: Koa = new Koa();
+
+// logger
+import logger from "koa-logger";
 app.use(logger());
 
-const router: Router = new Router();
+// router
+import router from "./src/api";
+app.use(router());
 
-router.get("/", (ctx) => {
-  ctx.body = "Hello P6004!";
-});
-
-app.use(router.routes()).use(router.allowedMethods());
-
+// exception handling
 app.on("error", (err) => {
   console.error("server error", err);
 });

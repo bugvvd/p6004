@@ -1,0 +1,11 @@
+diff --git a/node_modules/koa-combine-routers/index.d.ts b/node_modules/koa-combine-routers/index.d.ts
+index ccc3520..d6222fa 100644
+--- a/node_modules/koa-combine-routers/index.d.ts
++++ b/node_modules/koa-combine-routers/index.d.ts
+@@ -1,5 +1,5 @@
+ import * as Compose from 'koa-compose'
+-import * as Router from 'koa-router'
++import * as Router from '@koa/router'
+ 
+ type Middleware = Compose.ComposedMiddleware<any>
+ 
