@@ -5,7 +5,7 @@ import * as UserService from "../user.service";
 describe("User Service", () => {
   beforeEach(() => {});
   afterEach(() => {
-    jest.restoreAllMocks();
+    // jest.restoreAllMocks();
   });
   test.todo("Login");
   test.todo("Logout");

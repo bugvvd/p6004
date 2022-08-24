@@ -1,6 +1,10 @@
 import Koa from "koa";
 const app: Koa = new Koa();
 
+// body parser
+import bodyParser from "koa-bodyparser";
+app.use(bodyParser());
+
 // logger
 import logger from "koa-logger";
 if (process.env.NODE_ENV !== "test") {
