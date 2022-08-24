@@ -50,5 +50,8 @@ response format:
 ```
 
 
-## NestJS
+## Test
 
+[Testing Koa Server with Jest](https://medium.com/scrum-ai/4-testing-koa-server-with-jest-week-5-8e980cd30527)
+[Let’s build a REST API with Koa.js and test with Jest!](https://codeburst.io/lets-build-a-rest-api-with-koa-js-and-test-with-jest-2634c14394d3)
+> close the server after each test
