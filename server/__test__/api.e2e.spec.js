@@ -20,10 +20,12 @@ describe("API end point", () => {
       expect(response.status).toBe(200);
       expect(response.text).toBe("Hello User!");
     });
-    test.todo("POST /api/user/login")
-    test.todo("POST /api/user/logout")
-    test.todo("POST /api/user/register")
-    test.todo("POST /api/user/deregister")
+    test.todo("POST /api/user/register");
+    test.todo("DELETE /api/user/deregister");
+    test.todo("POST /api/user/login");
+    test.todo("GET /api/user/:id");
+    test.todo("PUT /api/user/update");
+    
   });
   describe("Management", () => {
     test("GET /api/management", async () => {

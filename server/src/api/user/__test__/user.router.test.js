@@ -14,14 +14,34 @@ describe("User Router", () => {
     expect(route.methods).toStrictEqual(["HEAD", "GET"]);
     expect(route.stack).toHaveLength(1);
   });
+  test("POST /api/user/register", () => {
+    const path = "/api/user/register";
+    const route = userRouterStack.filter((route) => route.path === path)[0];
+    expect(route.methods).toStrictEqual(["POST"]);
+    expect(route.stack).toHaveLength(1);
+  });
+  test("DELETE /api/user/deregister", () => {
+    const path = "/api/user/deregister";
+    const route = userRouterStack.filter((route) => route.path === path)[0];
+    expect(route.methods).toStrictEqual(["DELETE"]);
+    expect(route.stack).toHaveLength(1);
+  });
   test("POST /api/user/login", () => {
     const path = "/api/user/login";
     const route = userRouterStack.filter((route) => route.path === path)[0];
     expect(route.methods).toStrictEqual(["POST"]);
     expect(route.stack).toHaveLength(1);
   });
-  test.todo("POST /api/user/logout");
-  test.todo("POST /api/user/register");
-  test.todo("DELETE /api/user/deregister");
-  test.todo("PUT /api/user/update");
+  test("GET /api/user/get", () => {
+    const path = `/api/user/get`;
+    const route = userRouterStack.filter((route) => route.path === path)[0];
+    expect(route.methods).toStrictEqual(["HEAD", "GET"]);
+    expect(route.stack).toHaveLength(2);
+  });
+  test("PUT /api/user/update", () => {
+    const path = "/api/user/update";
+    const route = userRouterStack.filter((route) => route.path === path)[0];
+    expect(route.methods).toStrictEqual(["PUT"]);
+    expect(route.stack).toHaveLength(2);
+  });
 });
