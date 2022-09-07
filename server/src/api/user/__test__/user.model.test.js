@@ -5,29 +5,23 @@ import User from "../../../db/model/User";
 beforeAll(async () => {
   await mongod.connect();
 });
-afterEach(async () => {
+
+beforeEach(async () => {
   await mongod.clear();
 });
+
 afterAll(async () => {
   await mongod.stop();
 });
 
 describe("User", () => {
   test("Find one User", async () => {
-    try {
-      await UserModel.findOne("foo", "bar");
-    } catch (error) {
-      expect(error.message).toMatch("foo does not exist");
-    }
+    await expect(UserModel.findOne("foo", "bar")).rejects.toThrow();
   });
   test("Insert one User", async () => {
     const { uid } = await UserModel.insertOne("foo", "bar");
     const user = await User.findById(uid);
     expect(user.username).toBe("foo");
-    try {
-      await UserModel.insertOne("foo", "bar");
-    } catch (error) {
-      expect(error.message).toMatch("foo already exists");
-    }
+    await expect(UserModel.insertOne("foo", "bar")).rejects.toThrowError();
   });
 });
