@@ -1,0 +1,62 @@
+{
+    "register": {
+        "success": {
+            "code": 0,
+            "message": "Success."
+        },
+        "failure": {
+            "duplicated_username": {
+                "code": 1,
+                "message": "Username is already taken."
+            }
+        }
+    },
+    "deRegister": {
+        "success": {
+            "code": 0,
+            "message": "Success."
+        },
+        "failure": {
+            "username_not_found": {
+                "code": 1,
+                "message": "Username is not found."
+            }
+        }
+    },
+    "login": {
+        "success": {
+            "code": 0,
+            "message": "Success."
+        },
+        "failure": {
+            "username_not_found": {
+                "code": 1,
+                "message": "Username is not found."
+            }
+        }
+    },
+    "get": {
+        "success": {
+            "code": 0,
+            "message": "Success."
+        },
+        "failure": {
+            "some_error": {
+                "code": 1,
+                "message": "Some error occured."
+            }
+        }
+    },
+    "update": {
+        "success": {
+            "code": 0,
+            "message": "Success."
+        },
+        "failure": {
+            "duplicated_field_value": {
+                "code": 1,
+                "message": "New field value is the same as the old value."
+            }
+        }
+    }
+}

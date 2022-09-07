@@ -41,11 +41,10 @@ response format:
 {
   "code": 0,
   "message": "success or failure message",
-  "description": "more detailed description for a response, an extentsion for message",
-  "detail": {
+  "data": {
     "fieldName": "value for requested resources"
-  },
-  "token": "request token renewed"
+    // "token": "request token renewed"
+  }
 }
 ```
 

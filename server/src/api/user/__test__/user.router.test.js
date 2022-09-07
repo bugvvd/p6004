@@ -18,19 +18,19 @@ describe("User Router", () => {
     const path = "/api/user/register";
     const route = userRouterStack.filter((route) => route.path === path)[0];
     expect(route.methods).toStrictEqual(["POST"]);
-    expect(route.stack).toHaveLength(1);
+    expect(route.stack).toHaveLength(2);
   });
   test("DELETE /api/user/deregister", () => {
     const path = "/api/user/deregister";
     const route = userRouterStack.filter((route) => route.path === path)[0];
     expect(route.methods).toStrictEqual(["DELETE"]);
-    expect(route.stack).toHaveLength(1);
+    expect(route.stack).toHaveLength(2);
   });
   test("POST /api/user/login", () => {
     const path = "/api/user/login";
     const route = userRouterStack.filter((route) => route.path === path)[0];
     expect(route.methods).toStrictEqual(["POST"]);
-    expect(route.stack).toHaveLength(1);
+    expect(route.stack).toHaveLength(2);
   });
   test("GET /api/user/get", () => {
     const path = `/api/user/get`;

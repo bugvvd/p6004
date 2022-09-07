@@ -1,30 +1,45 @@
-export type RegisterPayload = {
+enum Code {
+  Success = 0,
+  Fail = 1,
+}
+
+export declare interface UserCredential {
   username: string;
   password: string;
-};
+}
 
-export type RegisterServiceResult = {
-  username: string | null;
-  token: string | null;
-};
+declare interface ServiceResult {
+  code: Code;
+  message: string | null;
+}
 
-export type DeregisterPayload = {
-  username: string;
-  password: string;
-};
+// Register
+export interface RegisterServiceResult extends ServiceResult {
+  data: {
+    uid: string;
+    token: string;
+  } | null;
+}
 
-export type DeregisterServiceResult = {
-  isSuccessful: boolean;
-};
+// Deregister
 
-export type LoginPayload = {
-  username: string;
-  password: string;
-};
+export declare interface DeregisterServiceResult extends ServiceResult {
+  data: {
+    isSuccessful: boolean;
+  } | null;
+}
 
-export type LoginServiceResult = {
-  username: string | null;
-  token: string | null;
-};
+// Login
 
-export type GetServiceResult = {};
+export declare interface LoginServiceResult extends ServiceResult {
+  data: {
+    uid: string;
+    token: string;
+  } | null;
+}
+
+export declare interface GetServiceResult extends ServiceResult {}
+
+export declare interface UserSchema extends UserCredential {
+  uid: string;
+}
