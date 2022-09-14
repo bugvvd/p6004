@@ -31,6 +31,11 @@ local
 
 [MongoDB - 连接](https://www.runoob.com/mongodb/mongodb-connections.html)
 `mongodb://[username:password@]host1[:port1][,host2[:port2],...[,hostN[:portN]]][/[database][?options]]`
+
+[MongoDB - 关闭](https://stackoverflow.com/a/54119152/18748524)
+`mongo admin --eval "db.shutdownServer();quit()"`
+
+
 通过 MongoDB Compass 查看
 
 ## APIs

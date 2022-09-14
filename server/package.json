@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "db:dev": "(mongo admin --eval \"db.shutdownServer()\" && mongod --dbpath ./temp/db/dev/data --logpath ./temp/db/dev/log/mongo.log --bind_ip=0.0.0.0 --fork) || (mongod --dbpath ./temp/db/dev/data --logpath ./temp/db/dev/log/mongo.log --bind_ip=0.0.0.0 --fork)",
-    "db:test": "(mongo admin --eval \"db.shutdownServer()\" && mongod --dbpath ./temp/db/test/data --logpath ./temp/db/test/log/mongo.log --bind_ip=0.0.0.0 --fork) || (mongod --dbpath ./temp/db/test/data --logpath ./temp/db/test/log/mongo.log --bind_ip=0.0.0.0 --fork)",
+    "db:dev": "(mongo admin --eval \"db.shutdownServer();quit()\" && mongod --dbpath ./temp/db/dev/data --logpath ./temp/db/dev/log/mongo.log --bind_ip=0.0.0.0 --fork) || (mongod --dbpath ./temp/db/dev/data --logpath ./temp/db/dev/log/mongo.log --bind_ip=0.0.0.0 --fork)",
+    "db:test": "(mongo admin --eval \"db.shutdownServer();quit()\" && mongod --dbpath ./temp/db/test/data --logpath ./temp/db/test/log/mongo.log --bind_ip=0.0.0.0 --fork --port 28017) || (mongod --dbpath ./temp/db/test/data --logpath ./temp/db/test/log/mongo.log --bind_ip=0.0.0.0 --fork --port 28017)",
     "serve:dev": "nodemon server.ts",
     "serve:test": "DOTENV_CONFIG_PATH=.env.test nodemon  server.ts",
     "test": "jest --clearCache && DOTENV_CONFIG_PATH=.env.test jest --setupFiles=dotenv/config --watchAll --detectOpenHandles"
