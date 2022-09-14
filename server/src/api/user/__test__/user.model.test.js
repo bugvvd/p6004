@@ -1,6 +1,6 @@
-import * as mongod from "../../../db/__test__/test-db";
+import * as mongod from "../../../../db/__test__/test-db";
 import * as UserModel from "../user.model";
-import User from "../../../db/model/User";
+import User from "../../../../db/model/User";
 
 beforeAll(async () => {
   await mongod.connect();

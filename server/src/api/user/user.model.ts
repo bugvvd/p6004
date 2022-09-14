@@ -1,4 +1,4 @@
-import User from "../../db/model/User";
+import User from "../../../db/model/User";
 
 const findOne = async (username: string) => {
   return await User.findOne({ username })
@@ -25,6 +25,7 @@ const insertOne = async (username: string, passwordHash: string) => {
   try {
     const newDoc = new User({ username, password: passwordHash });
     await newDoc.save();
+    
     return { uid: newDoc._id.toString() };
   } catch (error) {
     throw error;
