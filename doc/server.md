@@ -25,7 +25,7 @@ Package permissions
 ## MongoDB
 
 [Linux 平台安装 MongoDB](https://www.runoob.com/mongodb/mongodb-linux-install.html)
-`mongod --dbpath [[dpath]] --logpath [[logFilePath]] --bind_ip=0.0.0.0 --fork`(重要)
+`mongod --dbpath [[dpath]] --logpath [[logFilePath]] --bind_ip=0.0.0.0 --fork [[--port 10086]]`(重要)
 local
 `mongod --dbpath ./data --logpath ./log/mongo.log --bind_ip=0.0.0.0 --fork`(重要)
 
